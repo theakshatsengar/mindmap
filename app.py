@@ -5,6 +5,11 @@ import json
 from urllib.parse import parse_qs, urlparse
 import asyncio
 from generate_tree import TreeGenerator
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 class MindMapHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -25,9 +30,14 @@ class MindMapHandler(SimpleHTTPRequestHandler):
                 return
 
             try:
+                # Check if API key is set
+                api_key = os.getenv('GROQ_API_KEY')
+                if not api_key:
+                    raise ValueError("GROQ_API_KEY environment variable is not set")
+
                 # Generate the tree with consistent filename
                 output_file = "tree.json"
-                generator = TreeGenerator(os.getenv('GROQ_API_KEY'), output_file)
+                generator = TreeGenerator(api_key, output_file)
                 asyncio.run(generator.generate_tree(topic))
 
                 # Save the topic for reference
@@ -43,7 +53,14 @@ class MindMapHandler(SimpleHTTPRequestHandler):
                     'redirect': f'/mindmap.html?topic={topic}'
                 }).encode())
             except Exception as e:
-                self.send_error(500, str(e))
+                logger.error(f"Error generating mind map: {str(e)}")
+                self.send_response(500)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({
+                    'success': False,
+                    'error': str(e)
+                }).encode())
         else:
             self.send_error(404, "Not found")
 
@@ -52,7 +69,7 @@ def run_server(port=None):
         port = int(os.getenv('PORT', 8000))
     server_address = ('', port)
     httpd = HTTPServer(server_address, MindMapHandler)
-    print(f"Server running at http://localhost:{port}")
+    logger.info(f"Server running at http://localhost:{port}")
     if os.getenv('RENDER') is None:  # Only open browser in local development
         webbrowser.open(f'http://localhost:{port}')
     httpd.serve_forever()
