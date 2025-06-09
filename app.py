@@ -27,7 +27,7 @@ class MindMapHandler(SimpleHTTPRequestHandler):
             try:
                 # Generate the tree with consistent filename
                 output_file = "tree.json"
-                generator = TreeGenerator("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", output_file)
+                generator = TreeGenerator(os.getenv('GROQ_API_KEY'), output_file)
                 asyncio.run(generator.generate_tree(topic))
 
                 # Save the topic for reference
@@ -47,11 +47,14 @@ class MindMapHandler(SimpleHTTPRequestHandler):
         else:
             self.send_error(404, "Not found")
 
-def run_server(port=8000):
+def run_server(port=None):
+    if port is None:
+        port = int(os.getenv('PORT', 8000))
     server_address = ('', port)
     httpd = HTTPServer(server_address, MindMapHandler)
     print(f"Server running at http://localhost:{port}")
-    webbrowser.open(f'http://localhost:{port}')
+    if os.getenv('RENDER') is None:  # Only open browser in local development
+        webbrowser.open(f'http://localhost:{port}')
     httpd.serve_forever()
 
 if __name__ == '__main__':
