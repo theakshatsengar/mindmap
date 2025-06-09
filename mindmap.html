@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Mind Map</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
     <style>
         :root {
             --bg-color: #f5f5f5;
@@ -90,27 +89,37 @@
         }
         .floating-nav {
             position: fixed;
-            top: -45px; /* Show just a tiny bit */
+            top: -45px;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 12px 25px;
             border-radius: 0 0 25px 25px;
-            box-shadow: 0 4px 15px var(--nav-shadow);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: flex;
             gap: 15px;
             align-items: center;
-            border: 1px solid var(--nav-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-top: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
+
+        [data-theme="dark"] .floating-nav {
+            background: rgba(45, 45, 45, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
         .floating-nav.show {
             top: 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
-        /* Add a small visible part at the top */
+
         .floating-nav::before {
             content: '';
             position: absolute;
@@ -119,26 +128,26 @@
             transform: translateX(-50%);
             width: 30px;
             height: 3px;
-            background: var(--nav-bg);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 0 0 3px 3px;
-            border: 1px solid var(--nav-border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-top: none;
             cursor: pointer;
             transition: all 0.3s ease;
             opacity: 0.7;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
-        .floating-nav:hover::before {
-            width: 40px;
-            opacity: 1;
-        }
+
         .nav-group {
             display: flex;
             gap: 10px;
             align-items: center;
             padding: 0 10px;
-            border-right: 1px solid var(--nav-border);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
+
         .nav-group:last-child {
             border-right: none;
         }
@@ -153,7 +162,7 @@
             padding: 8px 16px;
             border: none;
             border-radius: 20px;
-            background: var(--node-fill);
+            background: rgba(76, 175, 80, 0.9);
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -161,11 +170,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: rgba(76, 175, 80, 1);
         }
         button:active {
             transform: translateY(0);
@@ -177,12 +189,12 @@
             gap: 5px;
         }
         .theme-toggle button {
-            background: transparent;
-            border: 1px solid var(--node-fill);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: var(--text-color);
         }
         .theme-toggle button:hover {
-            background: var(--node-fill);
+            background: rgba(76, 175, 80, 0.9);
             color: white;
         }
         #status {
@@ -328,6 +340,7 @@
     </nav>
     <div id="mindmap"></div>
 
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
         // Add theme toggle functionality
         function toggleTheme() {
@@ -397,7 +410,7 @@
         function loadData() {
             updateStatus('Loading data...', 'loading');
             
-            fetch('research_world_history_tree.json')
+            fetch('research_data_structure_and_algorithm_for_frontend_dev_role_in_startups_tree.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

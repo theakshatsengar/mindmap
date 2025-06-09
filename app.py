@@ -287,7 +287,7 @@ async def main():
     if not api_key:
         raise ValueError("GROQ_API_KEY environment variable not set")
     
-    topic = "world history"
+    topic = "data structure and algorithm for frontend dev role in startups"
     output_file = f"research_{topic.lower().replace(' ', '_')}.json"
     
     assistant = ResearchAssistant(api_key, output_file)
