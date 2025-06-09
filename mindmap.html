@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Mind Map</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         :root {
             --bg-color: #f5f5f5;
@@ -17,6 +18,8 @@
             --nav-bg: rgba(255, 255, 255, 0.8);
             --nav-border: rgba(255, 255, 255, 0.2);
             --nav-shadow: rgba(0, 0, 0, 0.1);
+            --action-button-size: 48px;
+            --action-button-margin: 16px;
         }
 
         [data-theme="dark"] {
@@ -105,8 +108,6 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-top: none;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
         }
 
         [data-theme="dark"] .floating-nav {
@@ -151,6 +152,7 @@
         .nav-group:last-child {
             border-right: none;
         }
+
         .nav-label {
             font-size: 14px;
             color: var(--text-color);
@@ -158,107 +160,44 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        button {
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-color);
             padding: 8px 16px;
-            border: none;
             border-radius: 20px;
-            background: rgba(76, 175, 80, 0.9);
-            color: white;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
         }
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            background: rgba(76, 175, 80, 1);
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
         }
-        button:active {
+
+        .nav-button:active {
             transform: translateY(0);
-            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
         }
+
+        .nav-button .material-icons {
+            font-size: 18px;
+        }
+
         .theme-toggle {
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        .theme-toggle button {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-color);
-        }
-        .theme-toggle button:hover {
-            background: rgba(76, 175, 80, 0.9);
-            color: white;
-        }
-        #status {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px var(--nav-shadow);
-            z-index: 1000;
-            border: 1px solid var(--nav-border);
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: help;
-            transition: all 0.3s ease;
-        }
 
-        #status::before {
-            content: '';
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ff4444; /* Red for loading */
-            transition: background 0.3s ease;
-        }
-
-        #status.loaded::before {
-            background: #4CAF50; /* Green for loaded */
-        }
-
-        #status.error::before {
-            background: #ff4444; /* Red for error */
-        }
-
-        #status-tooltip {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            margin-top: 10px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+        .theme-toggle .nav-button {
             padding: 8px 12px;
-            border-radius: 6px;
-            box-shadow: 0 4px 15px var(--nav-shadow);
-            border: 1px solid var(--nav-border);
-            color: var(--text-color);
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        #status:hover #status-tooltip {
-            opacity: 1;
-            visibility: visible;
         }
 
         @media (max-width: 768px) {
@@ -278,10 +217,13 @@
                 gap: 8px;
             }
 
-            button {
+            .nav-button {
                 padding: 6px 12px;
                 font-size: 13px;
-                gap: 6px;
+            }
+
+            .nav-button .material-icons {
+                font-size: 16px;
             }
 
             .nav-label {
@@ -300,17 +242,20 @@
                 gap: 6px;
             }
 
-            button {
+            .nav-button {
                 padding: 5px 10px;
                 font-size: 12px;
-                gap: 4px;
+            }
+
+            .nav-button .material-icons {
+                font-size: 14px;
             }
 
             .nav-label {
                 display: none;
             }
 
-            .theme-toggle button {
+            .theme-toggle .nav-button {
                 padding: 5px;
             }
 
@@ -318,31 +263,143 @@
                 display: none;
             }
         }
+
+        .action-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--nav-bg);
+            border: 1px solid var(--nav-border);
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px var(--nav-shadow);
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--nav-shadow);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .action-button:active {
+            transform: translateY(0);
+        }
+
+        .action-button .material-icons {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .action-button {
+                width: 36px;
+                height: 36px;
+            }
+
+            .action-button .material-icons {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .action-button {
+                width: 32px;
+                height: 32px;
+            }
+
+            .action-button .material-icons {
+                font-size: 16px;
+            }
+        }
+
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 14px;
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            z-index: 1000;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="logo">lessboring labs</div>
     <div id="status" title="Loading...">
         <div id="status-tooltip">Loading...</div>
     </div>
     <nav class="floating-nav">
         <div class="nav-group">
-            <button onclick="expandAll()">Expand</button>
-            <button onclick="collapseAll()">Collapse</button>
-            <button onclick="resetZoom()">Reset</button>
+            <button class="nav-button" onclick="expandAll()">
+                <span class="material-icons">expand_more</span>
+                <span>Expand</span>
+            </button>
+            <button class="nav-button" onclick="collapseAll()">
+                <span class="material-icons">expand_less</span>
+                <span>Collapse</span>
+            </button>
+            <button class="nav-button" onclick="resetZoom()">
+                <span class="material-icons">restart_alt</span>
+                <span>Reset</span>
+            </button>
         </div>
         <div class="nav-group theme-toggle">
             <span class="nav-label">Theme:</span>
-            <button onclick="toggleTheme()">
-                <span class="theme-icon">🌙</span>
+            <button class="nav-button" onclick="toggleTheme()">
+                <span class="material-icons theme-icon">dark_mode</span>
                 <span class="theme-text">Dark Mode</span>
             </button>
         </div>
     </nav>
     <div id="mindmap"></div>
 
+    <div class="action-buttons">
+        <button class="action-button" onclick="saveMindMap()" title="Save Mind Map">
+            <span class="material-icons">save</span>
+        </button>
+        <button class="action-button" onclick="searchNewTopic()" title="Search New Topic">
+            <span class="material-icons">search</span>
+        </button>
+    </div>
+
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        // Add theme toggle functionality
+        // Update theme toggle function to use Material Icons
         function toggleTheme() {
             const body = document.body;
             const currentTheme = body.getAttribute('data-theme');
@@ -350,16 +407,15 @@
             body.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             
-            // Update button text and icon
-            const themeButton = document.querySelector('.theme-toggle button');
+            const themeButton = document.querySelector('.theme-toggle .nav-button');
             const themeIcon = themeButton.querySelector('.theme-icon');
             const themeText = themeButton.querySelector('.theme-text');
             
             if (newTheme === 'dark') {
-                themeIcon.textContent = '☀️';
+                themeIcon.textContent = 'light_mode';
                 themeText.textContent = 'Light Mode';
             } else {
-                themeIcon.textContent = '🌙';
+                themeIcon.textContent = 'dark_mode';
                 themeText.textContent = 'Dark Mode';
             }
         }
@@ -368,12 +424,12 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             document.body.setAttribute('data-theme', savedTheme);
-            const themeButton = document.querySelector('.theme-toggle button');
+            const themeButton = document.querySelector('.theme-toggle .nav-button');
             const themeIcon = themeButton.querySelector('.theme-icon');
             const themeText = themeButton.querySelector('.theme-text');
             
             if (savedTheme === 'dark') {
-                themeIcon.textContent = '☀️';
+                themeIcon.textContent = 'light_mode';
                 themeText.textContent = 'Light Mode';
             }
         }
@@ -406,11 +462,11 @@
             status.title = message;
         }
 
-        // Update the loadData function to use the new status indicator
+        // Update the loadData function to use the consistent filename
         function loadData() {
             updateStatus('Loading data...', 'loading');
             
-            fetch('research_data_structure_and_algorithm_for_frontend_dev_role_in_startups_tree.json')
+            fetch('tree.json')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -685,11 +741,14 @@
 
             // Add labels for the nodes
             nodeEnter.append("text")
-                .attr("dy", ".35em")
+                .attr("dy", "-1em")  // Move text up by 1em
                 .attr("x", d => d.children || d._children ? -13 : 13)
                 .attr("text-anchor", d => d.children || d._children ? "end" : "start")
                 .text(d => d.data.name)
-                .style("fill", "var(--text-color)");
+                .style("fill", "var(--text-color)")
+                .style("font-size", "12px")
+                .style("font-weight", "500")
+                .style("pointer-events", "none");  // Prevent text from interfering with node clicks
 
             // Update the nodes to their new position
             const nodeUpdate = nodeEnter.merge(node);
@@ -703,6 +762,11 @@
                 .style("fill", d => d.children || d._children ? "var(--node-fill)" : "none")
                 .style("stroke", "var(--node-stroke)")
                 .style("stroke-width", "2px");
+
+            // Update text position
+            nodeUpdate.select("text")
+                .attr("dy", "-1em")  // Keep text above node
+                .style("fill", "var(--text-color)");
 
             // Remove any exiting nodes
             const nodeExit = node.exit().transition()
@@ -826,6 +890,31 @@
                     nav.classList.remove('show');
                 }, 1000);
             });
+        }
+
+        // Add save functionality
+        function saveMindMap() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const topic = urlParams.get('topic') || 'untitled';
+            const filename = `${topic.toLowerCase().replace(' ', '_')}_mindmap.json`;
+            
+            // Create a blob with the current tree data
+            const blob = new Blob([JSON.stringify(treeData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            // Create a temporary link and trigger download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Add search new topic functionality
+        function searchNewTopic() {
+            window.location.href = '/';
         }
     </script>
 </body>

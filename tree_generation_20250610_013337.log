@@ -1,0 +1,28 @@
+Starting tree generation for topic: akshat sengar'
+Generating subtopics for: akshat sengar'
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Who is Akshat Sengar
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Early Life and Education
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Career and Entrepreneurial Ventures
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Personal Life and Achievements
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Akshat Sengar's achievements
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Winning the prestigious Young Scientist Award
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Publishing research papers in top-tier scientific journals
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Developing innovative solutions for environmental sustainability
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Akshat Sengar's personal life
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Early Life and Education
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Family and Relationships
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Generating subtopics for: Personal Interests and Hobbies
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+Tree structure saved to tree.json
