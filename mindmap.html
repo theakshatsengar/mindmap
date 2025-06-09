@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Mind Map</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #f5f5f5;
+            --card-bg: white;
+            --text-color: #333;
+            --node-stroke: #4CAF50;
+            --node-fill: #4CAF50;
+            --link-color: #ccc;
+            --tooltip-bg: white;
+            --tooltip-border: #ddd;
+            --nav-bg: rgba(255, 255, 255, 0.8);
+            --nav-border: rgba(255, 255, 255, 0.2);
+            --nav-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --text-color: #fff;
+            --node-stroke: #66bb6a;
+            --node-fill: #66bb6a;
+            --link-color: #666;
+            --tooltip-bg: #2d2d2d;
+            --tooltip-border: #444;
+            --nav-bg: rgba(45, 45, 45, 0.8);
+            --nav-border: rgba(255, 255, 255, 0.1);
+            --nav-shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            overflow: hidden;
+        }
+        #mindmap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--card-bg);
+            transition: background-color 0.3s;
+        }
+        .node circle {
+            fill: var(--card-bg);
+            stroke: var(--node-stroke);
+            stroke-width: 2px;
+            transition: fill 0.3s, stroke 0.3s;
+        }
+        .node text {
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            fill: var(--text-color);
+            transition: fill 0.3s;
+        }
+        .link {
+            fill: none;
+            stroke: var(--link-color);
+            stroke-width: 1.5px;
+            transition: stroke 0.3s;
+        }
+        .node:hover circle {
+            fill: var(--node-fill);
+            opacity: 0.2;
+        }
+        .tooltip {
+            position: absolute;
+            padding: 10px;
+            background: var(--tooltip-bg);
+            border: 1px solid var(--tooltip-border);
+            border-radius: 4px;
+            pointer-events: none;
+            font-size: 14px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-width: 300px;
+            z-index: 1000;
+            color: var(--text-color);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+        .floating-nav {
+            position: fixed;
+            top: -45px; /* Show just a tiny bit */
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 12px 25px;
+            border-radius: 0 0 25px 25px;
+            box-shadow: 0 4px 15px var(--nav-shadow);
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            border: 1px solid var(--nav-border);
+            border-top: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .floating-nav.show {
+            top: 0;
+        }
+        /* Add a small visible part at the top */
+        .floating-nav::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: var(--nav-bg);
+            border-radius: 0 0 3px 3px;
+            border: 1px solid var(--nav-border);
+            border-top: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+        .floating-nav:hover::before {
+            width: 40px;
+            opacity: 1;
+        }
+        .nav-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 0 10px;
+            border-right: 1px solid var(--nav-border);
+            transition: all 0.3s ease;
+        }
+        .nav-group:last-child {
+            border-right: none;
+        }
+        .nav-label {
+            font-size: 14px;
+            color: var(--text-color);
+            margin-right: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background: var(--node-fill);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+        }
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .theme-toggle button {
+            background: transparent;
+            border: 1px solid var(--node-fill);
+            color: var(--text-color);
+        }
+        .theme-toggle button:hover {
+            background: var(--node-fill);
+            color: white;
+        }
+        #status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px var(--nav-shadow);
+            z-index: 1000;
+            border: 1px solid var(--nav-border);
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: help;
+            transition: all 0.3s ease;
+        }
+
+        #status::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff4444; /* Red for loading */
+            transition: background 0.3s ease;
+        }
+
+        #status.loaded::before {
+            background: #4CAF50; /* Green for loaded */
+        }
+
+        #status.error::before {
+            background: #ff4444; /* Red for error */
+        }
+
+        #status-tooltip {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px var(--nav-shadow);
+            border: 1px solid var(--nav-border);
+            color: var(--text-color);
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        #status:hover #status-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 768px) {
+            .floating-nav {
+                top: 0; /* Always visible on mobile */
+                padding: 10px 15px;
+                gap: 10px;
+                border-radius: 0 0 20px 20px;
+            }
+
+            .floating-nav::before {
+                display: none; /* Hide the pull tab on mobile */
+            }
+
+            .nav-group {
+                padding: 0 8px;
+                gap: 8px;
+            }
+
+            button {
+                padding: 6px 12px;
+                font-size: 13px;
+                gap: 6px;
+            }
+
+            .nav-label {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-nav {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+
+            .nav-group {
+                padding: 0 6px;
+                gap: 6px;
+            }
+
+            button {
+                padding: 5px 10px;
+                font-size: 12px;
+                gap: 4px;
+            }
+
+            .nav-label {
+                display: none;
+            }
+
+            .theme-toggle button {
+                padding: 5px;
+            }
+
+            .theme-toggle .theme-text {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="status" title="Loading...">
+        <div id="status-tooltip">Loading...</div>
+    </div>
+    <nav class="floating-nav">
+        <div class="nav-group">
+            <button onclick="expandAll()">Expand</button>
+            <button onclick="collapseAll()">Collapse</button>
+            <button onclick="resetZoom()">Reset</button>
+        </div>
+        <div class="nav-group theme-toggle">
+            <span class="nav-label">Theme:</span>
+            <button onclick="toggleTheme()">
+                <span class="theme-icon">🌙</span>
+                <span class="theme-text">Dark Mode</span>
+            </button>
+        </div>
+    </nav>
+    <div id="mindmap"></div>
+
+    <script>
+        // Add theme toggle functionality
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Update button text and icon
+            const themeButton = document.querySelector('.theme-toggle button');
+            const themeIcon = themeButton.querySelector('.theme-icon');
+            const themeText = themeButton.querySelector('.theme-text');
+            
+            if (newTheme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            } else {
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'Dark Mode';
+            }
+        }
+
+        // Check for saved theme preference and update button accordingly
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.setAttribute('data-theme', savedTheme);
+            const themeButton = document.querySelector('.theme-toggle button');
+            const themeIcon = themeButton.querySelector('.theme-icon');
+            const themeText = themeButton.querySelector('.theme-text');
+            
+            if (savedTheme === 'dark') {
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'Light Mode';
+            }
+        }
+
+        let treeData;
+        let root;
+        let svg;
+        let g;
+        let zoom;
+        let tooltip;
+        let i = 0;
+
+        // Update status indicator
+        function updateStatus(message, type = 'loading') {
+            const status = document.getElementById('status');
+            const tooltip = document.getElementById('status-tooltip');
+            
+            // Remove all status classes
+            status.classList.remove('loaded', 'error');
+            
+            // Add appropriate class
+            if (type === 'loaded') {
+                status.classList.add('loaded');
+            } else if (type === 'error') {
+                status.classList.add('error');
+            }
+            
+            // Update tooltip text
+            tooltip.textContent = message;
+            status.title = message;
+        }
+
+        // Update the loadData function to use the new status indicator
+        function loadData() {
+            updateStatus('Loading data...', 'loading');
+            
+            fetch('research_world_history_tree.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Loaded tree data:', data);
+                    treeData = convertToD3Format(data);
+                    console.log('Converted tree data:', treeData);
+                    root = d3.hierarchy(treeData);
+                    initializeMindMap();
+                    updateStatus('Data loaded successfully', 'loaded');
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    updateStatus('Error loading data: ' + error.message, 'error');
+                    
+                    // Create sample data for testing
+                    treeData = {
+                        "title": "World History",
+                        "subtopics": {
+                            "Ancient Civilizations": {
+                                "title": "Ancient Civilizations",
+                                "subtopics": {
+                                    "Egypt": {
+                                        "title": "Egypt",
+                                        "subtopics": {}
+                                    },
+                                    "Greece": {
+                                        "title": "Greece",
+                                        "subtopics": {}
+                                    }
+                                }
+                            },
+                            "Middle Ages": {
+                                "title": "Middle Ages",
+                                "subtopics": {
+                                    "Feudalism": {
+                                        "title": "Feudalism",
+                                        "subtopics": {}
+                                    }
+                                }
+                            }
+                        }
+                    };
+                    treeData = convertToD3Format(treeData);
+                    console.log('Using sample data:', treeData);
+                    root = d3.hierarchy(treeData);
+                    initializeMindMap();
+                    updateStatus('Using sample data', 'loaded');
+                });
+        }
+
+        function convertToD3Format(data) {
+            function convertNode(node) {
+                const result = {
+                    name: node.title,
+                    children: []
+                };
+                
+                if (node.subtopics) {
+                    for (const [key, value] of Object.entries(node.subtopics)) {
+                        result.children.push(convertNode(value));
+                    }
+                }
+                
+                return result;
+            }
+            
+            return convertNode(data);
+        }
+
+        function initializeMindMap() {
+            // Clear any existing content
+            d3.select("#mindmap").selectAll("*").remove();
+
+            // Get the container dimensions
+            const container = document.getElementById("mindmap");
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            // Create the SVG
+            svg = d3.select("#mindmap")
+                .append("svg")
+                .attr("width", "100%")
+                .attr("height", "100%")
+                .attr("viewBox", [0, 0, width, height])
+                .attr("preserveAspectRatio", "xMidYMid meet");
+
+            // Add zoom behavior
+            zoom = d3.zoom()
+                .scaleExtent([0.1, 4])
+                .on("zoom", (event) => {
+                    g.attr("transform", event.transform);
+                });
+
+            svg.call(zoom);
+
+            // Create the main group
+            g = svg.append("g");
+
+            // Create tooltip
+            tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+
+            // Calculate the tree layout with more horizontal spacing
+            const treeLayout = d3.tree()
+                .nodeSize([height / 64, width / 4])
+                .separation((a, b) => {
+                    // Special handling for center node
+                    if (a.parent === root && b.parent === root) {
+                        const children = root.children;
+                        const centerIndex = Math.floor(children.length / 2);
+                        const aIndex = children.indexOf(a);
+                        const bIndex = children.indexOf(b);
+                        
+                        // If one of the nodes is the center node
+                        if (aIndex === centerIndex || bIndex === centerIndex) {
+                            return 0; // No horizontal separation for center node
+                        }
+                    }
+                    return a.parent === b.parent ? 2 : 3;
+                });
+
+            // Compute the new tree layout
+            const nodes = treeLayout(root);
+
+            // Adjust positions for center node
+            if (root.children) {
+                const children = root.children;
+                const centerIndex = Math.floor(children.length / 2);
+                const centerNode = children[centerIndex];
+                
+                // Move center node to be vertically aligned with root
+                if (centerNode) {
+                    centerNode.x = root.x;
+                }
+            }
+
+            // Center the tree
+            const initialTransform = d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(1);
+
+            svg.call(zoom.transform, initialTransform);
+
+            // Update the nodes
+            update(root);
+
+            // Collapse all nodes immediately
+            collapseAll();
+
+            // Add window resize handler
+            window.addEventListener('resize', handleResize);
+        }
+
+        function handleResize() {
+            const container = document.getElementById("mindmap");
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            // Update SVG viewBox
+            svg.attr("viewBox", [0, 0, width, height]);
+
+            // Recalculate tree layout with new dimensions
+            const treeLayout = d3.tree()
+                .nodeSize([height / 64, width / 4])
+                .separation((a, b) => {
+                    // Special handling for center node
+                    if (a.parent === root && b.parent === root) {
+                        const children = root.children;
+                        const centerIndex = Math.floor(children.length / 2);
+                        const aIndex = children.indexOf(a);
+                        const bIndex = children.indexOf(b);
+                        
+                        // If one of the nodes is the center node
+                        if (aIndex === centerIndex || bIndex === centerIndex) {
+                            return 0; // No horizontal separation for center node
+                        }
+                    }
+                    return a.parent === b.parent ? 2 : 3;
+                });
+
+            const nodes = treeLayout(root);
+
+            // Adjust positions for center node
+            if (root.children) {
+                const children = root.children;
+                const centerIndex = Math.floor(children.length / 2);
+                const centerNode = children[centerIndex];
+                
+                // Move center node to be vertically aligned with root
+                if (centerNode) {
+                    centerNode.x = root.x;
+                }
+            }
+
+            // Update the visualization
+            update(root);
+        }
+
+        function centerNode(node) {
+            const container = document.getElementById("mindmap");
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            // Calculate the scale needed to fit the tree
+            const scale = 0.8 / Math.max(
+                (node.descendants().length * (height / 4)) / height,
+                (node.descendants().length * (width / 8)) / width
+            );
+
+            // Calculate the translation needed to center the clicked node
+            const transform = d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(scale)
+                .translate(-node.y, -node.x);
+
+            // Animate the transition
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, transform);
+        }
+
+        function update(source) {
+            const duration = 750;
+            const nodes = root.descendants();
+            const links = root.links();
+
+            // Update the nodes
+            const node = g.selectAll(".node")
+                .data(nodes, d => d.id || (d.id = ++i));
+
+            // Enter any new nodes
+            const nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on("click", (event, d) => {
+                    if (d.children) {
+                        d._children = d.children;
+                        d.children = null;
+                    } else {
+                        d.children = d._children;
+                        d._children = null;
+                    }
+                    update(d);
+                    centerNode(d);
+                })
+                .on("mouseover", (event, d) => {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html(d.data.name)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", () => {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+
+            // Add circles for the nodes
+            nodeEnter.append("circle")
+                .attr("r", 10)
+                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "none")
+                .style("stroke", "var(--node-stroke)")
+                .style("stroke-width", "2px");
+
+            // Add labels for the nodes
+            nodeEnter.append("text")
+                .attr("dy", ".35em")
+                .attr("x", d => d.children || d._children ? -13 : 13)
+                .attr("text-anchor", d => d.children || d._children ? "end" : "start")
+                .text(d => d.data.name)
+                .style("fill", "var(--text-color)");
+
+            // Update the nodes to their new position
+            const nodeUpdate = nodeEnter.merge(node);
+            nodeUpdate.transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            // Update the node attributes and style
+            nodeUpdate.select("circle")
+                .attr("r", 10)
+                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "none")
+                .style("stroke", "var(--node-stroke)")
+                .style("stroke-width", "2px");
+
+            // Remove any exiting nodes
+            const nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            // Update the links
+            const link = g.selectAll(".link")
+                .data(links, d => d.target.id);
+
+            // Enter any new links
+            const linkEnter = link.enter().append("path")
+                .attr("class", "link")
+                .attr("d", d => {
+                    const o = {x: source.x0, y: source.y0};
+                    return diagonal(o, o);
+                });
+
+            // Update the links to their new position
+            const linkUpdate = linkEnter.merge(link);
+            linkUpdate.transition()
+                .duration(duration)
+                .attr("d", d => diagonal(d.source, d.target));
+
+            // Remove any exiting links
+            const linkExit = link.exit().transition()
+                .duration(duration)
+                .attr("d", d => {
+                    const o = {x: source.x, y: source.y};
+                    return diagonal(o, o);
+                })
+                .remove();
+
+            // Store the old positions for transition
+            nodes.forEach(d => {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+        }
+
+        function diagonal(s, d) {
+            return `M ${s.y} ${s.x}
+                    C ${(s.y + d.y) / 2} ${s.x},
+                      ${(s.y + d.y) / 2} ${d.x},
+                      ${d.y} ${d.x}`;
+        }
+
+        function expandAll() {
+            root.descendants().forEach(d => {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+            });
+            update(root);
+        }
+
+        function collapseAll() {
+            root.descendants().forEach(d => {
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+            });
+            update(root);
+        }
+
+        function resetZoom() {
+            const container = document.getElementById("mindmap");
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            const transform = d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(1);
+
+            svg.transition()
+                .duration(750)
+                .call(zoom.transform, transform);
+        }
+
+        // Load the data when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            initializeMindMap();
+        });
+
+        // Add mouse movement detection for nav bar
+        let navTimeout;
+        const nav = document.querySelector('.floating-nav');
+        const navHeight = 70; // Approximate height of the nav bar
+
+        // Only add mouse movement detection for desktop
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                // Show nav if mouse is near the top of the screen
+                if (e.clientY < navHeight) {
+                    nav.classList.add('show');
+                    clearTimeout(navTimeout);
+                } else {
+                    // Hide nav after mouse moves away
+                    navTimeout = setTimeout(() => {
+                        nav.classList.remove('show');
+                    }, 1000); // 1 second delay before hiding
+                }
+            });
+
+            // Keep nav visible when hovering over it
+            nav.addEventListener('mouseenter', () => {
+                nav.classList.add('show');
+                clearTimeout(navTimeout);
+            });
+
+            nav.addEventListener('mouseleave', () => {
+                navTimeout = setTimeout(() => {
+                    nav.classList.remove('show');
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html> 

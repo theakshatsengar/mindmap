@@ -1,0 +1,194 @@
+{
+  "title": "world history",
+  "subtopics": {
+    "Ancient Civilizations": {
+      "title": "Ancient Civilizations",
+      "subtopics": {
+        "Development of City-States": {
+          "title": "Development of City-States",
+          "subtopics": {
+            "Origins of City-States in Italy and Greece": {
+              "title": "Origins of City-States in Italy and Greece",
+              "subtopics": {}
+            },
+            "Characteristics of City-States such as Governance and Economy": {
+              "title": "Characteristics of City-States such as Governance and Economy",
+              "subtopics": {}
+            },
+            "Growth and Decline of City-States like Sparta and Athens": {
+              "title": "Growth and Decline of City-States like Sparta and Athens",
+              "subtopics": {}
+            }
+          }
+        },
+        "Emergence of Writing Systems": {
+          "title": "Emergence of Writing Systems",
+          "subtopics": {
+            "Invention of Writing": {
+              "title": "Invention of Writing",
+              "subtopics": {}
+            },
+            "Development of Pictograms and Ideograms": {
+              "title": "Development of Pictograms and Ideograms",
+              "subtopics": {}
+            },
+            "Spread of Alphabet Writing Systems": {
+              "title": "Spread of Alphabet Writing Systems",
+              "subtopics": {}
+            }
+          }
+        },
+        "Trade and Cultural Exchange Networks": {
+          "title": "Trade and Cultural Exchange Networks",
+          "subtopics": {
+            "The Silk Road": {
+              "title": "The Silk Road",
+              "subtopics": {}
+            },
+            "Maritime Trade Routes": {
+              "title": "Maritime Trade Routes",
+              "subtopics": {}
+            },
+            "Cultural Diffusion and the Spread of Ideas": {
+              "title": "Cultural Diffusion and the Spread of Ideas",
+              "subtopics": {}
+            }
+          }
+        },
+        "Formation of Empires": {
+          "title": "Formation of Empires",
+          "subtopics": {
+            "Rise of City-States": {
+              "title": "Rise of City-States",
+              "subtopics": {}
+            },
+            "Expansion through Conquest": {
+              "title": "Expansion through Conquest",
+              "subtopics": {}
+            },
+            "Administration and Governance": {
+              "title": "Administration and Governance",
+              "subtopics": {}
+            }
+          }
+        }
+      }
+    },
+    "Medieval and Early Modern Periods": {
+      "title": "Medieval and Early Modern Periods",
+      "subtopics": {
+        "Feudalism and Manor System": {
+          "title": "Feudalism and Manor System",
+          "subtopics": {
+            "Characteristics of Feudalism": {
+              "title": "Characteristics of Feudalism",
+              "subtopics": {}
+            },
+            "The Manor System: Lords and Vassals": {
+              "title": "The Manor System: Lords and Vassals",
+              "subtopics": {}
+            },
+            "Economic and Social Aspects of the Manor System": {
+              "title": "Economic and Social Aspects of the Manor System",
+              "subtopics": {}
+            }
+          }
+        },
+        "Rise of Trade and Commerce": {
+          "title": "Rise of Trade and Commerce",
+          "subtopics": {
+            "Growth of Towns and Cities": {
+              "title": "Growth of Towns and Cities",
+              "subtopics": {}
+            },
+            "Emergence of Merchant Classes": {
+              "title": "Emergence of Merchant Classes",
+              "subtopics": {}
+            },
+            "Development of Trade Routes and Networks": {
+              "title": "Development of Trade Routes and Networks",
+              "subtopics": {}
+            },
+            "Advances in Banking and Finance": {
+              "title": "Advances in Banking and Finance",
+              "subtopics": {}
+            }
+          }
+        },
+        "Cultural and Intellectual Developments of the Renaissance": {
+          "title": "Cultural and Intellectual Developments of the Renaissance",
+          "subtopics": {
+            "Humanism and the Revival of Classical Learning": {
+              "title": "Humanism and the Revival of Classical Learning",
+              "subtopics": {}
+            },
+            "The Emergence of New Artistic and Literary Forms": {
+              "title": "The Emergence of New Artistic and Literary Forms",
+              "subtopics": {}
+            },
+            "The Development of New Scientific Theories and Discoveries": {
+              "title": "The Development of New Scientific Theories and Discoveries",
+              "subtopics": {}
+            }
+          }
+        }
+      }
+    },
+    "Modern Era": {
+      "title": "Modern Era",
+      "subtopics": {
+        "Rise of Nation-States": {
+          "title": "Rise of Nation-States",
+          "subtopics": {
+            "Absolutism and the consolidation of power": {
+              "title": "Absolutism and the consolidation of power",
+              "subtopics": {}
+            },
+            "Rise of bureaucracy and administrative systems": {
+              "title": "Rise of bureaucracy and administrative systems",
+              "subtopics": {}
+            },
+            "National identity and the emergence of nationalist movements": {
+              "title": "National identity and the emergence of nationalist movements",
+              "subtopics": {}
+            }
+          }
+        },
+        "Industrialization and Imperialism": {
+          "title": "Industrialization and Imperialism",
+          "subtopics": {
+            "Rise of Industrial Capitalism": {
+              "title": "Rise of Industrial Capitalism",
+              "subtopics": {}
+            },
+            "European Imperialism and Colonization": {
+              "title": "European Imperialism and Colonization",
+              "subtopics": {}
+            },
+            "Global Economic Reordering": {
+              "title": "Global Economic Reordering",
+              "subtopics": {}
+            }
+          }
+        },
+        "World Wars and the Emergence of the United States and Soviet Union as Superpowers": {
+          "title": "World Wars and the Emergence of the United States and Soviet Union as Superpowers",
+          "subtopics": {
+            "Causes and Outbreak of World War I": {
+              "title": "Causes and Outbreak of World War I",
+              "subtopics": {}
+            },
+            "World War II and the Rise of the US and USSR": {
+              "title": "World War II and the Rise of the US and USSR",
+              "subtopics": {}
+            },
+            "Post-War Bipolar World and the Cold War": {
+              "title": "Post-War Bipolar World and the Cold War",
+              "subtopics": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
