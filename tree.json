@@ -1,51 +1,78 @@
 {
-  "title": "History of Humankind",
-  "description": "The history of humankind is a long and complex journey that has shaped our species into what we are today. From the emergence of Homo sapiens in Africa to the development of complex societies and civilizations, human history is a rich tapestry of achievements, conflicts, and transformations. This mind map aims to provide an overview of the key milestones and developments that have defined human history.",
+  "title": "History of AI",
+  "description": "The history of Artificial Intelligence (AI) spans several decades and is marked by significant milestones, breakthroughs, and setbacks. From the early beginnings to the current state-of-the-art advancements, AI has evolved through the contributions of pioneers, scientists, and researchers. This mind map explores the major aspects of AI's history, highlighting key events, innovations, and developments that have shaped the field.",
   "subtopics": {
-    "Early Human History": {
-      "title": "Early Human History",
-      "description": "The early history of humans is marked by the emergence of Homo sapiens in Africa around 300,000 years ago. This period saw the development of early human societies, the control of fire, and the creation of stone tools. Early humans also migrated out of Africa, colonizing other parts of the world.",
+    "Early Beginnings": {
+      "title": "Early Beginnings",
+      "description": "The concept of Artificial Intelligence dates back to ancient Greece, where myths told of artificial beings created to serve human-like purposes. The 20th century marked the beginning of modern AI era, as pioneers like Alan Turing, Marvin Minsky, and John McCarthy laid the foundation for AI research. The Dartmouth Conference in 1956) is considered the starting point of AI as a field of study.",
       "subtopics": {
-        "Emergence of Homo Sapiens": {
-          "title": "Emergence of Homo Sapiens",
-          "description": "The emergence of Homo sapiens in Africa around 300,000 years ago marked a significant milestone in human evolution. This species was characterized by its advanced cognitive abilities, upright posture, and ability to create complex social structures. The earliest fossils of Homo sapiens date back to around 195,000 years ago. Early Homo sapiens lived in small nomadic groups, hunting and gathering food to survive. They also developed early forms of art, such as cave paintings and personal adornments.",
+        "Pioneers": {
+          "title": "Pioneers",
+          "description": "Alan Turing, often referred to as the father of computer science, proposed the Turing Test to measure a machine's ability to exhibit intelligent behavior. Marvin Minsky and John McCarthy, who coined the term 'Artificial Intelligence,' were instrumental in shaping the field. Their contributions paved the way for the development of AI algorithms, neural networks, and machine learning.",
           "subtopics": {}
         },
-        "Early Human Migration": {
-          "title": "Early Human Migration",
-          "description": "Early human migration out of Africa was a gradual process that occurred in multiple waves. The first migration out of Africa occurred around 60,000 years ago, with humans colonizing the Middle East, Asia, and Europe. Later migrations occurred around 10,000 years ago, with humans migrating to the Americas and Oceania. These migrations were driven by climate change, the search for food and resources, and the desire for new habitats.",
+        "Dartmouth Conference": {
+          "title": "Dartmouth Conference",
+          "description": "The 1956 Dartmouth Summer Research Project on Artificial Intelligence, led by John McCarthy, aimed to explore the possibilities of creating machines that could simulate human intelligence. This conference marked the beginning of AI as a field of research, bringing together prominent researchers to discuss and develop AI concepts.",
           "subtopics": {}
         }
       }
     },
-    "Development of Complex Societies": {
-      "title": "Development of Complex Societies",
-      "description": "The development of complex societies marked a significant turning point in human history. This period saw the emergence of settled agriculture, the rise of cities, and the development of complex social structures. Complex societies also saw the emergence of social hierarchies, with elites controlling power and resources.",
+    "Rule-Based Expert Systems": {
+      "title": "Rule-Based Expert Systems",
+      "description": "The 1970s and 1980s saw the rise of rule-based expert systems, which mimicked human decision-making processes using if-then rules. These systems were widely adopted in various industries, but their limitations, such as lack of common sense and inability to learn from experience, led to a decline in the 1990s.",
       "subtopics": {
-        "Emergence of Agriculture": {
-          "title": "Emergence of Agriculture",
-          "description": "The emergence of agriculture around 10,000 years ago marked a significant shift in human societies. Agriculture allowed for the production of surplus food, which in turn enabled the growth of cities and complex societies. Early farming practices included the domestication of plants and animals, such as wheat, barley, and cattle. Agriculture also led to the development of new technologies, such as the plow and the wheel.",
+        "MyCIN": {
+          "title": "MyCIN",
+          "description": "Developed in the 1970s, MyCIN was a rule-based expert system designed to diagnose and treat bacterial infections. MyCIN demonstrated the potential of AI in medicine, but its limitations ultimately led to its decline.",
           "subtopics": {}
         },
-        "Rise of Cities": {
-          "title": "Rise of Cities",
-          "description": "The rise of cities marked a significant milestone in human history. Cities emerged as centers of trade, commerce, and innovation. Early cities included Mesopotamia, Egypt, and the Indus Valley Civilization. Cities were characterized by their complex social structures, architecture, and systems of governance.",
+        "Expert Systems Limitations": {
+          "title": "Expert Systems Limitations",
+          "description": "Despite their initial success, rule-based expert systems faced significant limitations. They lacked common sense, were unable to adapt to new situations, and required extensive knowledge engineering. These limitations led to a decline in the use of expert systems and a shift towards new AI approaches.",
           "subtopics": {}
         }
       }
     },
-    "Major Civilizations": {
-      "title": "Major Civilizations",
-      "description": "Major civilizations have shaped human history, leaving behind lasting legacies in the fields of politics, art, literature, and science. These civilizations have also been marked by conflicts, conquests, and cultural exchange.",
+    "AI Winter": {
+      "title": "AI Winter",
+      "description": "The 1980s and 1990s experienced an AI winter, characterized by reduced funding, lack of interest, and stagnant progress. This period was marked by the failure to deliver on the promises of the previous decade, leading to a decline in AI research and development.",
       "subtopics": {
-        "Ancient Mesopotamia": {
-          "title": "Ancient Mesopotamia",
-          "description": "Ancient Mesopotamia was one of the earliest major civilizations, emerging around 3500 BCE. This civilization is known for its innovations in writing, governance, and architecture. Mesopotamia was also home to the Sumerians, Akkadians, Babylonians, and Assyrians. The region was marked by its fertile soil, extensive trade networks, and cultural achievements such as the Epic of Gilgamesh.",
+        "Reasons for Decline": {
+          "title": "Reasons for Decline",
+          "description": "The AI winter was caused by several factors, including the failure of expert systems, the collapse of the Lisp machine market, and the decline of government funding. Additionally, the realization that AI was more complex than initially thought, led to a re-evaluation of the field's goals and approaches.",
+          "subtopics": {}
+        }
+      }
+    },
+    "Machine Learning and Resurgence": {
+      "title": "Machine Learning and Resurgence",
+      "description": "The 21st century saw a resurgence of AI, driven by advances in machine learning, increased computing power, and the availability of large datasets. This period is marked by significant breakthroughs in image and speech recognition, natural language processing, and the development of deep learning algorithms.",
+      "subtopics": {
+        "Machine Learning": {
+          "title": "Machine Learning",
+          "description": "Machine learning, a subset of AI, focuses on developing algorithms that enable machines to learn from data. This approach has led to significant breakthroughs in image and speech recognition, natural language processing, and recommendation systems. Machine learning has become a crucial aspect of modern AI applications.",
           "subtopics": {}
         },
-        "Ancient Egypt": {
-          "title": "Ancient Egypt",
-          "description": "Ancient Egypt was one of the most enduring and influential civilizations in human history. This civilization emerged around 3100 BCE and lasted until the Roman conquest in 30 BCE. Ancient Egypt is known for its monumental architecture, including the Pyramids of Giza and the Great Sphinx. The civilization was also marked by its complex system of governance, its pantheon of gods and goddesses, and its significant cultural achievements.",
+        "Deep Learning": {
+          "title": "Deep Learning",
+          "description": "Deep learning, a subset of machine learning, uses neural networks to analyze complex data. The development of deep learning algorithms has enabled applications such as image recognition, speech recognition, and natural language processing. Deep learning has become a key technology driving AI advancements.",
+          "subtopics": {}
+        }
+      }
+    },
+    "Modern Applications and Ethics": {
+      "title": "Modern Applications and Ethics",
+      "description": "Modern AI has numerous applications across industries, including healthcare, finance, transportation, and education. However, AI also raises significant ethical concerns, such as job displacement, bias in decision-making, and privacy violations.",
+      "subtopics": {
+        "Applications": {
+          "title": "Applications",
+          "description": "AI has transformed various sectors, including healthcare, finance, transportation, and education. AI-powered systems can analyze large datasets, provide personalized services, and improve efficiency. However, AI applications also raise concerns about job displacement and the need for responsible AI development.",
+          "subtopics": {}
+        },
+        "Ethical Concerns": {
+          "title": "Ethical Concerns",
+          "description": "As AI becomes increasingly pervasive, ethical concerns arise. AI systems can perpetuate biases, violate privacy, and displace jobs. It is essential to develop AI that is transparent, accountable, and fair. Addressing these concerns is crucial for responsible AI development and deployment.",
           "subtopics": {}
         }
       }

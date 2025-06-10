@@ -52,23 +52,41 @@ class RateLimiter:
 class TreeGenerator:
     def __init__(self, api_key: str, output_file: str):
         self.client = Groq(api_key=api_key)
-        self.max_depth = 3
         self.rate_limiter = RateLimiter()
         self.output_file = output_file
         self.max_retries = 3
+        self.size_configs = {
+            'small': {
+                'max_depth': 2,
+                'max_subtopics': 3,
+                'max_aspects': 1
+            },
+            'medium': {
+                'max_depth': 3,
+                'max_subtopics': 4,
+                'max_aspects': 2
+            },
+            'detailed': {
+                'max_depth': 4,
+                'max_subtopics': 5,
+                'max_aspects': 3
+            }
+        }
     
-    def _create_complete_tree_prompt(self, topic: str) -> str:
+    def _create_complete_tree_prompt(self, topic: str, size: str = 'medium') -> str:
+        config = self.size_configs.get(size, self.size_configs['medium'])
+        
         return f"""Generate a detailed mind map for the topic '{topic}' with the following requirements:
 
-1. Create a hierarchical structure with 3-5 levels deep
+1. Create a hierarchical structure with {config['max_depth']} levels deep
 2. Each node must have:
    - A title (concise and clear)
    - A detailed description (2-4 sentences for non-leaf nodes, 6-8 sentences for leaf nodes)
    - A subtopics object (empty for leaf nodes)
 
 3. Structure Requirements:
-   - Root level: One main topic with required number of major subtopics
-   - Second level: Each major subtopic should have 1-2 detailed aspects
+   - Root level: One main topic with {config['max_subtopics']} major subtopics
+   - Second level: Each major subtopic should have {config['max_aspects']} detailed aspects
    - Third level: Only if necessary for very complex topics
    - Leaf nodes should have empty subtopics: {{}}
 
@@ -182,16 +200,13 @@ IMPORTANT:
                 else:
                     raise ValueError(f"Failed to generate mind map: {str(e)}")
 
-    async def generate_tree(self, topic: str) -> Dict:
-        # logger.info(f"Starting tree generation for topic: {topic}")
-        
+    async def generate_tree(self, topic: str, size: str = 'medium') -> Dict:
         # Generate the complete tree in a single API call
-        tree = await self._get_llm_response(self._create_complete_tree_prompt(topic))
+        tree = await self._get_llm_response(self._create_complete_tree_prompt(topic, size))
         
         # Save the tree structure
         with open(self.output_file, 'w') as f:
             json.dump(tree, f, indent=2)
-        # logger.info(f"Tree structure saved to {self.output_file}")
         
         return tree
 

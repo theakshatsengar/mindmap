@@ -55,10 +55,13 @@
 
         .input-group {
             margin-bottom: 1.5rem;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
 
         input[type="text"] {
-            width: 100%;
+            flex: 1;
             padding: 12px;
             border: 2px solid var(--input-border);
             border-radius: 6px;
@@ -68,7 +71,18 @@
             transition: border-color 0.3s;
         }
 
-        input[type="text"]:focus {
+        select {
+            padding: 12px;
+            border: 2px solid var(--input-border);
+            border-radius: 6px;
+            font-size: 16px;
+            background: var(--card-bg);
+            color: var(--text-color);
+            transition: border-color 0.3s;
+            cursor: pointer;
+        }
+
+        select:focus {
             outline: none;
             border-color: var(--input-focus);
         }
@@ -117,6 +131,7 @@
         .theme-toggle:hover {
             transform: scale(1.1);
         }
+       
     </style>
 </head>
 <body>
@@ -125,6 +140,11 @@
         <h1>Mind Map Generator</h1>
         <div class="input-group">
             <input type="text" id="topic" placeholder="Enter your topic (e.g., 'Data Structures and Algorithms')" />
+            <select id="size" aria-label="Mind map size">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="detailed">Detailed</option>
+            </select>
         </div>
         <button onclick="generateMindMap()" id="generateBtn">Generate Mind Map</button>
         <div class="loading" id="loading">
@@ -154,6 +174,8 @@
 
         async function generateMindMap() {
             const topic = document.getElementById('topic').value.trim();
+            const size = document.getElementById('size').value;
+            
             if (!topic) {
                 alert('Please enter a topic');
                 return;
@@ -171,7 +193,10 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ topic: topic })
+                    body: JSON.stringify({ 
+                        topic: topic,
+                        size: size
+                    })
                 });
 
                 if (!response.ok) {

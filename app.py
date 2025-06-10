@@ -27,6 +27,7 @@ class MindMapHandler(SimpleHTTPRequestHandler):
             post_data = self.rfile.read(content_length)
             data = json.loads(post_data.decode('utf-8'))
             topic = data.get('topic')
+            size = data.get('size', 'medium')  # Default to medium if not specified
 
             if not topic:
                 self.send_error(400, "Topic is required")
@@ -41,7 +42,7 @@ class MindMapHandler(SimpleHTTPRequestHandler):
                 # Generate the tree with consistent filename
                 output_file = "tree.json"
                 generator = TreeGenerator(api_key, output_file)
-                asyncio.run(generator.generate_tree(topic))
+                asyncio.run(generator.generate_tree(topic, size))
 
                 # Save the topic for reference
                 with open('current_topic.txt', 'w') as f:
