@@ -31,7 +31,7 @@ class MindMapHandler(SimpleHTTPRequestHandler):
 
             try:
                 # Check if API key is set
-                api_key = os.getenv('GROQ_API_KEY')
+                api_key = "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"
                 if not api_key:
                     raise ValueError("GROQ_API_KEY environment variable is not set")
 
@@ -71,7 +71,7 @@ def run_server(port=None):
     httpd = HTTPServer(server_address, MindMapHandler)
     logger.info(f"Server running at http://localhost:{port}")
     if os.getenv('RENDER') is None:  # Only open browser in local development
-        webbrowser.open(f'http://localhost:{port}')
+      webbrowser.open(f'http://localhost:{port}')
     httpd.serve_forever()
 
 if __name__ == '__main__':

@@ -76,6 +76,9 @@
             fill: var(--node-fill);
             opacity: 0.2;
         }
+        .node:hover text {
+            font-weight: bold;
+        }
         .tooltip {
             position: absolute;
             padding: 10px;
@@ -348,12 +351,17 @@
         @media (max-width: 768px) {
             .logo {
                 font-size: 12px;
+                top: auto;
+                bottom: 20px;
+                left: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
                 font-size: 11px;
+                bottom: 15px;
+                left: 15px;
             }
         }
     </style>
@@ -525,6 +533,7 @@
             function convertNode(node) {
                 const result = {
                     name: node.title,
+                    description: node.description || node.title,  // Use title as description if no description is provided
                     children: []
                 };
                 
@@ -577,7 +586,7 @@
 
             // Calculate the tree layout with more horizontal spacing
             const treeLayout = d3.tree()
-                .nodeSize([height / 64, width / 4])
+                .nodeSize([height / 32, width / 4])  // Reduced from 64 to 32 to increase vertical spacing
                 .separation((a, b) => {
                     // Special handling for center node
                     if (a.parent === root && b.parent === root) {
@@ -591,7 +600,7 @@
                             return 0; // No horizontal separation for center node
                         }
                     }
-                    return a.parent === b.parent ? 2 : 3;
+                    return a.parent === b.parent ? 2.5 : 3.5;  // Increased separation values
                 });
 
             // Compute the new tree layout
@@ -612,7 +621,7 @@
             // Center the tree
             const initialTransform = d3.zoomIdentity
                 .translate(width / 2, height / 2)
-                .scale(1);
+                .scale(0.8);  // Reduced initial scale to show more of the tree
 
             svg.call(zoom.transform, initialTransform);
 
@@ -636,7 +645,7 @@
 
             // Recalculate tree layout with new dimensions
             const treeLayout = d3.tree()
-                .nodeSize([height / 64, width / 4])
+                .nodeSize([height / 32, width / 4])
                 .separation((a, b) => {
                     // Special handling for center node
                     if (a.parent === root && b.parent === root) {
@@ -650,7 +659,7 @@
                             return 0; // No horizontal separation for center node
                         }
                     }
-                    return a.parent === b.parent ? 2 : 3;
+                    return a.parent === b.parent ? 2.5 : 3.5;
                 });
 
             const nodes = treeLayout(root);
@@ -722,7 +731,17 @@
                     tooltip.transition()
                         .duration(200)
                         .style("opacity", .9);
-                    tooltip.html(d.data.name)
+                    
+                    // Get the description from the node data
+                    const description = d.data.description || d.data.name;
+                    
+                    // Create a formatted tooltip with title and description
+                    const tooltipContent = `
+                        <div style="font-weight: bold; margin-bottom: 5px;">${d.data.name}</div>
+                        <div style="font-size: 12px; color: var(--text-color); opacity: 0.8;">${description}</div>
+                    `;
+                    
+                    tooltip.html(tooltipContent)
                         .style("left", (event.pageX + 10) + "px")
                         .style("top", (event.pageY - 28) + "px");
                 })
@@ -735,7 +754,7 @@
             // Add circles for the nodes
             nodeEnter.append("circle")
                 .attr("r", 10)
-                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "none")
+                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "var(--card-bg)")
                 .style("stroke", "var(--node-stroke)")
                 .style("stroke-width", "2px");
 
@@ -747,8 +766,7 @@
                 .text(d => d.data.name)
                 .style("fill", "var(--text-color)")
                 .style("font-size", "12px")
-                .style("font-weight", "500")
-                .style("pointer-events", "none");  // Prevent text from interfering with node clicks
+                .style("pointer-events", "none");  // Ensure text doesn't interfere with hover
 
             // Update the nodes to their new position
             const nodeUpdate = nodeEnter.merge(node);
@@ -759,7 +777,7 @@
             // Update the node attributes and style
             nodeUpdate.select("circle")
                 .attr("r", 10)
-                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "none")
+                .style("fill", d => d.children || d._children ? "var(--node-fill)" : "var(--card-bg)")
                 .style("stroke", "var(--node-stroke)")
                 .style("stroke-width", "2px");
 
@@ -892,24 +910,71 @@
             });
         }
 
-        // Add save functionality
+        function createCleanNode(node) {
+            // Create a clean node without circular references
+            const cleanNode = {
+                name: node.data ? node.data.name : node.name,
+                description: node.data ? node.data.description : node.description,
+                children: []
+            };
+
+            // Process children
+            const children = node.children || node._children || [];
+            children.forEach(child => {
+                cleanNode.children.push(createCleanNode(child));
+            });
+
+            return cleanNode;
+        }
+
+        function formatMindMapAsText(node, level = 0) {
+            let text = '';
+            const indent = '  '.repeat(level);
+            
+            // Add title and description
+            text += `${indent}${node.name}\n`;
+            if (node.description) {
+                text += `${indent}Description: ${node.description}\n\n`;
+            }
+            
+            // Add subtopics
+            if (node.children && node.children.length > 0) {
+                node.children.forEach(child => {
+                    text += formatMindMapAsText(child, level + 1);
+                });
+            }
+            
+            return text;
+        }
+
         function saveMindMap() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const topic = urlParams.get('topic') || 'untitled';
-            const filename = `${topic.toLowerCase().replace(' ', '_')}_mindmap.json`;
-            
-            // Create a blob with the current tree data
-            const blob = new Blob([JSON.stringify(treeData, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            
-            // Create a temporary link and trigger download
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            try {
+                // Get the current topic from the URL or use a default
+                const urlParams = new URLSearchParams(window.location.search);
+                const topic = urlParams.get('topic') || 'Mind Map';
+                
+                // Create a clean copy of the tree structure
+                const cleanRoot = createCleanNode(root);
+                
+                // Format the mind map as text
+                const textContent = formatMindMapAsText(cleanRoot);
+                
+                // Create a blob with the text content
+                const blob = new Blob([textContent], { type: 'text/plain' });
+                
+                // Create a download link
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `${topic.toLowerCase().replace(/\s+/g, '_')}_mindmap.txt`;
+                
+                // Trigger the download
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            } catch (error) {
+                console.error('Error saving mind map:', error);
+                alert('Error saving mind map. Please check the console for details.');
+            }
         }
 
         // Add search new topic functionality

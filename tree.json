@@ -1,171 +1,57 @@
 {
-  "title": "akshat sengar'",
+  "title": "Structure of Human Eye",
+  "description": "The human eye is a complex and highly specialized organ that detects light and converts it into electrical signals that are transmitted to the brain, enabling us to see and interpret visual information.",
   "subtopics": {
-    "Who is Akshat Sengar": {
-      "title": "Who is Akshat Sengar",
+    "Outer Structures": {
+      "title": "Outer Structures",
+      "description": "The outer structures of the eye include the cornea, sclera, and conjunctiva, which provide protection, shape, and support to the eye.",
       "subtopics": {
-        "Early Life and Education": {
-          "title": "Early Life and Education",
-          "subtopics": {
-            "Birth and Family": {
-              "title": "Birth and Family",
-              "subtopics": {}
-            },
-            "Schooling and Early Interests": {
-              "title": "Schooling and Early Interests",
-              "subtopics": {}
-            },
-            "Higher Education and Academic Achievements": {
-              "title": "Higher Education and Academic Achievements",
-              "subtopics": {}
-            }
-          }
+        "Cornea": {
+          "title": "Cornea",
+          "description": "The cornea is the transparent, dome-shaped surface at the front of the eye, responsible for refracting light and providing a clear window into the eye.",
+          "subtopics": {}
         },
-        "Career and Entrepreneurial Ventures": {
-          "title": "Career and Entrepreneurial Ventures",
-          "subtopics": {
-            "Early Career and Internships": {
-              "title": "Early Career and Internships",
-              "subtopics": {}
-            },
-            "Founding and Scaling Startups": {
-              "title": "Founding and Scaling Startups",
-              "subtopics": {}
-            },
-            "Industry Recognition and Awards": {
-              "title": "Industry Recognition and Awards",
-              "subtopics": {}
-            }
-          }
+        "Sclera": {
+          "title": "Sclera",
+          "description": "The sclera is the white, tough, fibrous layer that covers the entire eyeball, except for the cornea, providing protection and structure to the eye.",
+          "subtopics": {}
         },
-        "Personal Life and Achievements": {
-          "title": "Personal Life and Achievements",
-          "subtopics": {
-            "Early Life and Education": {
-              "title": "Early Life and Education",
-              "subtopics": {}
-            },
-            "Career Milestones and Awards": {
-              "title": "Career Milestones and Awards",
-              "subtopics": {}
-            },
-            "Philanthropy and Social Causes": {
-              "title": "Philanthropy and Social Causes",
-              "subtopics": {}
-            }
-          }
+        "Conjunctiva": {
+          "title": "Conjunctiva",
+          "description": "The conjunctiva is a thin, transparent membrane that covers the white part of the eye and the inside of the eyelids, helping to lubricate and protect the eye.",
+          "subtopics": {}
         }
       }
     },
-    "Akshat Sengar's achievements": {
-      "title": "Akshat Sengar's achievements",
+    "Inner Structures": {
+      "title": "Inner Structures",
+      "description": "The inner structures of the eye include the lens, retina, and optic nerve, which work together to focus light, convert it into electrical signals, and transmit these signals to the brain.",
       "subtopics": {
-        "Winning the prestigious Young Scientist Award": {
-          "title": "Winning the prestigious Young Scientist Award",
+        "Lens": {
+          "title": "Lens",
+          "description": "The lens is a clear, flexible, biconvex structure behind the iris that changes shape to focus light on the retina, allowing us to see objects at varying distances.",
+          "subtopics": {}
+        },
+        "Retina": {
+          "title": "Retina",
+          "description": "The retina is the innermost layer of the eye that senses light and converts it into electrical impulses that are transmitted to the brain.",
           "subtopics": {
-            "Recognition for outstanding research": {
-              "title": "Recognition for outstanding research",
+            "Photoreceptors": {
+              "title": "Photoreceptors",
+              "description": "Photoreceptors are specialized cells in the retina that convert light into electrical signals, including rods and cones, which are sensitive to different types of light and are responsible for peripheral and central vision, respectively.",
               "subtopics": {}
             },
-            "Competing against top talent": {
-              "title": "Competing against top talent",
-              "subtopics": {}
-            },
-            "International acclaim and media coverage": {
-              "title": "International acclaim and media coverage",
+            "Macula": {
+              "title": "Macula",
+              "description": "The macula is a specialized area at the center of the retina responsible for central vision, fine detail, and color perception, with a high concentration of photoreceptors and a unique structure that allows for sharp, clear vision.",
               "subtopics": {}
             }
           }
         },
-        "Publishing research papers in top-tier scientific journals": {
-          "title": "Publishing research papers in top-tier scientific journals",
-          "subtopics": {
-            "Selecting high-impact journals aligned with research objectives": {
-              "title": "Selecting high-impact journals aligned with research objectives",
-              "subtopics": {}
-            },
-            "Crafting manuscripts meeting top-tier journal standards": {
-              "title": "Crafting manuscripts meeting top-tier journal standards",
-              "subtopics": {}
-            },
-            "Navigating rigorous review processes to secure publication": {
-              "title": "Navigating rigorous review processes to secure publication",
-              "subtopics": {}
-            }
-          }
-        },
-        "Developing innovative solutions for environmental sustainability": {
-          "title": "Developing innovative solutions for environmental sustainability",
-          "subtopics": {
-            "Designing and implementing eco-friendly infrastructure": {
-              "title": "Designing and implementing eco-friendly infrastructure",
-              "subtopics": {}
-            },
-            "Developing sustainable product lines and services": {
-              "title": "Developing sustainable product lines and services",
-              "subtopics": {}
-            },
-            "Creating data-driven tools for environmental impact assessment": {
-              "title": "Creating data-driven tools for environmental impact assessment",
-              "subtopics": {}
-            }
-          }
-        }
-      }
-    },
-    "Akshat Sengar's personal life": {
-      "title": "Akshat Sengar's personal life",
-      "subtopics": {
-        "Early Life and Education": {
-          "title": "Early Life and Education",
-          "subtopics": {
-            "Childhood and Family": {
-              "title": "Childhood and Family",
-              "subtopics": {}
-            },
-            "Early Interests and Influences": {
-              "title": "Early Interests and Influences",
-              "subtopics": {}
-            },
-            "Formal Education and Qualifications": {
-              "title": "Formal Education and Qualifications",
-              "subtopics": {}
-            }
-          }
-        },
-        "Family and Relationships": {
-          "title": "Family and Relationships",
-          "subtopics": {
-            "Family Background": {
-              "title": "Family Background",
-              "subtopics": {}
-            },
-            "Parents and Siblings": {
-              "title": "Parents and Siblings",
-              "subtopics": {}
-            },
-            "Romantic Relationships and Marriage": {
-              "title": "Romantic Relationships and Marriage",
-              "subtopics": {}
-            }
-          }
-        },
-        "Personal Interests and Hobbies": {
-          "title": "Personal Interests and Hobbies",
-          "subtopics": {
-            "Sports and Fitness": {
-              "title": "Sports and Fitness",
-              "subtopics": {}
-            },
-            "Playing guitar": {
-              "title": "Playing guitar",
-              "subtopics": {}
-            },
-            "Traveling and Exploring New Places": {
-              "title": "Traveling and Exploring New Places",
-              "subtopics": {}
-            }
-          }
+        "Optic Nerve": {
+          "title": "Optic Nerve",
+          "description": "The optic nerve is a bundle of nerve fibers that carries electrical signals from the retina to the brain, where they are interpreted and understood as visual information.",
+          "subtopics": {}
         }
       }
     }
