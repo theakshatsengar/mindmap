@@ -1,56 +1,51 @@
 {
-  "title": "Structure of Human Eye",
-  "description": "The human eye is a complex and highly specialized organ that detects light and converts it into electrical signals that are transmitted to the brain, enabling us to see and interpret visual information.",
+  "title": "History of Humankind",
+  "description": "The history of humankind is a long and complex journey that has shaped our species into what we are today. From the emergence of Homo sapiens in Africa to the development of complex societies and civilizations, human history is a rich tapestry of achievements, conflicts, and transformations. This mind map aims to provide an overview of the key milestones and developments that have defined human history.",
   "subtopics": {
-    "Outer Structures": {
-      "title": "Outer Structures",
-      "description": "The outer structures of the eye include the cornea, sclera, and conjunctiva, which provide protection, shape, and support to the eye.",
+    "Early Human History": {
+      "title": "Early Human History",
+      "description": "The early history of humans is marked by the emergence of Homo sapiens in Africa around 300,000 years ago. This period saw the development of early human societies, the control of fire, and the creation of stone tools. Early humans also migrated out of Africa, colonizing other parts of the world.",
       "subtopics": {
-        "Cornea": {
-          "title": "Cornea",
-          "description": "The cornea is the transparent, dome-shaped surface at the front of the eye, responsible for refracting light and providing a clear window into the eye.",
+        "Emergence of Homo Sapiens": {
+          "title": "Emergence of Homo Sapiens",
+          "description": "The emergence of Homo sapiens in Africa around 300,000 years ago marked a significant milestone in human evolution. This species was characterized by its advanced cognitive abilities, upright posture, and ability to create complex social structures. The earliest fossils of Homo sapiens date back to around 195,000 years ago. Early Homo sapiens lived in small nomadic groups, hunting and gathering food to survive. They also developed early forms of art, such as cave paintings and personal adornments.",
           "subtopics": {}
         },
-        "Sclera": {
-          "title": "Sclera",
-          "description": "The sclera is the white, tough, fibrous layer that covers the entire eyeball, except for the cornea, providing protection and structure to the eye.",
-          "subtopics": {}
-        },
-        "Conjunctiva": {
-          "title": "Conjunctiva",
-          "description": "The conjunctiva is a thin, transparent membrane that covers the white part of the eye and the inside of the eyelids, helping to lubricate and protect the eye.",
+        "Early Human Migration": {
+          "title": "Early Human Migration",
+          "description": "Early human migration out of Africa was a gradual process that occurred in multiple waves. The first migration out of Africa occurred around 60,000 years ago, with humans colonizing the Middle East, Asia, and Europe. Later migrations occurred around 10,000 years ago, with humans migrating to the Americas and Oceania. These migrations were driven by climate change, the search for food and resources, and the desire for new habitats.",
           "subtopics": {}
         }
       }
     },
-    "Inner Structures": {
-      "title": "Inner Structures",
-      "description": "The inner structures of the eye include the lens, retina, and optic nerve, which work together to focus light, convert it into electrical signals, and transmit these signals to the brain.",
+    "Development of Complex Societies": {
+      "title": "Development of Complex Societies",
+      "description": "The development of complex societies marked a significant turning point in human history. This period saw the emergence of settled agriculture, the rise of cities, and the development of complex social structures. Complex societies also saw the emergence of social hierarchies, with elites controlling power and resources.",
       "subtopics": {
-        "Lens": {
-          "title": "Lens",
-          "description": "The lens is a clear, flexible, biconvex structure behind the iris that changes shape to focus light on the retina, allowing us to see objects at varying distances.",
+        "Emergence of Agriculture": {
+          "title": "Emergence of Agriculture",
+          "description": "The emergence of agriculture around 10,000 years ago marked a significant shift in human societies. Agriculture allowed for the production of surplus food, which in turn enabled the growth of cities and complex societies. Early farming practices included the domestication of plants and animals, such as wheat, barley, and cattle. Agriculture also led to the development of new technologies, such as the plow and the wheel.",
           "subtopics": {}
         },
-        "Retina": {
-          "title": "Retina",
-          "description": "The retina is the innermost layer of the eye that senses light and converts it into electrical impulses that are transmitted to the brain.",
-          "subtopics": {
-            "Photoreceptors": {
-              "title": "Photoreceptors",
-              "description": "Photoreceptors are specialized cells in the retina that convert light into electrical signals, including rods and cones, which are sensitive to different types of light and are responsible for peripheral and central vision, respectively.",
-              "subtopics": {}
-            },
-            "Macula": {
-              "title": "Macula",
-              "description": "The macula is a specialized area at the center of the retina responsible for central vision, fine detail, and color perception, with a high concentration of photoreceptors and a unique structure that allows for sharp, clear vision.",
-              "subtopics": {}
-            }
-          }
+        "Rise of Cities": {
+          "title": "Rise of Cities",
+          "description": "The rise of cities marked a significant milestone in human history. Cities emerged as centers of trade, commerce, and innovation. Early cities included Mesopotamia, Egypt, and the Indus Valley Civilization. Cities were characterized by their complex social structures, architecture, and systems of governance.",
+          "subtopics": {}
+        }
+      }
+    },
+    "Major Civilizations": {
+      "title": "Major Civilizations",
+      "description": "Major civilizations have shaped human history, leaving behind lasting legacies in the fields of politics, art, literature, and science. These civilizations have also been marked by conflicts, conquests, and cultural exchange.",
+      "subtopics": {
+        "Ancient Mesopotamia": {
+          "title": "Ancient Mesopotamia",
+          "description": "Ancient Mesopotamia was one of the earliest major civilizations, emerging around 3500 BCE. This civilization is known for its innovations in writing, governance, and architecture. Mesopotamia was also home to the Sumerians, Akkadians, Babylonians, and Assyrians. The region was marked by its fertile soil, extensive trade networks, and cultural achievements such as the Epic of Gilgamesh.",
+          "subtopics": {}
         },
-        "Optic Nerve": {
-          "title": "Optic Nerve",
-          "description": "The optic nerve is a bundle of nerve fibers that carries electrical signals from the retina to the brain, where they are interpreted and understood as visual information.",
+        "Ancient Egypt": {
+          "title": "Ancient Egypt",
+          "description": "Ancient Egypt was one of the most enduring and influential civilizations in human history. This civilization emerged around 3100 BCE and lasted until the Roman conquest in 30 BCE. Ancient Egypt is known for its monumental architecture, including the Pyramids of Giza and the Great Sphinx. The civilization was also marked by its complex system of governance, its pantheon of gods and goddesses, and its significant cultural achievements.",
           "subtopics": {}
         }
       }

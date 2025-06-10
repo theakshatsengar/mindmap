@@ -60,24 +60,51 @@ class TreeGenerator:
     def _create_complete_tree_prompt(self, topic: str) -> str:
         return f"""Generate a detailed mind map for the topic '{topic}' with the following requirements:
 
-1. Create a hierarchical structure with up to a few levels deep as necessory to study
-2. Each node should have:
-   - A title
-   - A detailed description (2-4 sentences)
-   - For leaf nodes (last level), provide an even more detailed description (6-8 sentences)
+1. Create a hierarchical structure with 3-5 levels deep
+2. Each node must have:
+   - A title (concise and clear)
+   - A detailed description (2-4 sentences for non-leaf nodes, 6-8 sentences for leaf nodes)
+   - A subtopics object (empty for leaf nodes)
 
-Return the result as a JSON object with the following structure:
+3. Structure Requirements:
+   - Root level: One main topic with required number of major subtopics
+   - Second level: Each major subtopic should have 1-2 detailed aspects
+   - Third level: Only if necessary for very complex topics
+   - Leaf nodes should have empty subtopics: {{}}
+
+4. Description Guidelines:
+   - Root topic: Overview of the entire subject (2-4 sentences)
+   - Major subtopics: Detailed explanation of that aspect (2-4 sentences)
+   - Leaf nodes: Comprehensive explanation with specific details (6-8 sentences)
+
+Return the result as a JSON object with this exact structure:
 {{
     "title": "Main Topic",
-    "description": "Detailed description of the main topic",
+    "description": "2-4 sentence overview of the main topic",
     "subtopics": {{
-        "Subtopic 1": {{
-            "title": "Subtopic 1",
-            "description": "Detailed description of subtopic 1",
+        "Major Subtopic 1": {{
+            "title": "Major Subtopic 1",
+            "description": "2-4 sentence detailed explanation of this subtopic",
             "subtopics": {{
-                "Aspect 1": {{
-                    "title": "Aspect 1",
-                    "description": "Very detailed description of aspect 1",
+                "Detailed Aspect 1": {{
+                    "title": "Detailed Aspect 1",
+                    "description": "6-8 sentence comprehensive explanation with specific details",
+                    "subtopics": {{}}
+                }}
+            }}
+        }},
+        "Major Subtopic 2": {{
+            "title": "Major Subtopic 2",
+            "description": "2-4 sentence detailed explanation of this subtopic",
+            "subtopics": {{
+                "Detailed Aspect 1": {{
+                    "title": "Detailed Aspect 1",
+                    "description": "6-8 sentence comprehensive explanation with specific details",
+                    "subtopics": {{}}
+                }},
+                "Detailed Aspect 2": {{
+                    "title": "Detailed Aspect 2",
+                    "description": "6-8 sentence comprehensive explanation with specific details",
                     "subtopics": {{}}
                 }}
             }}
@@ -85,7 +112,12 @@ Return the result as a JSON object with the following structure:
     }}
 }}
 
-IMPORTANT: Return ONLY the JSON object, with no additional text, markdown formatting, or code blocks. The response should start with {{ and end with }}."""
+IMPORTANT:
+1. Return ONLY the JSON object, with no additional text or formatting
+2. The response must start with {{ and end with }}
+3. Maintain consistent indentation
+4. Ensure all descriptions are properly detailed and informative
+5. Keep the structure clean and well-organized"""
 
     async def _get_llm_response(self, prompt: str) -> Dict:
         for attempt in range(self.max_retries):

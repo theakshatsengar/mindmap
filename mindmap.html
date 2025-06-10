@@ -538,9 +538,10 @@
                 };
                 
                 if (node.subtopics) {
-                    for (const [key, value] of Object.entries(node.subtopics)) {
-                        result.children.push(convertNode(value));
-                    }
+                    // Convert all subtopics to an array of nodes
+                    Object.values(node.subtopics).forEach(subtopic => {
+                        result.children.push(convertNode(subtopic));
+                    });
                 }
                 
                 return result;

@@ -1,0 +1,467 @@
+
+Raw API Response: 
+
+
+JSON parsing error: Extra data: line 61 column 1 (char 4709)
+Failed to parse content: {
+    "title": "History of Humans",
+    "description": "The history of humans spans millions of years, from the emergence of early hominins to the present day. It is a complex and multifaceted story that encompasses the development of language, culture, and the impact of humans on the environment.",
+    "subtopics": {
+        "Early Hominins": {
+            "title": "Early Hominins",
+            "description": "The earliest human-like species, such as Australopithecus afarensis, around 4-5 million years ago. These early hominins were characterized by their upright posture and ability to walk on two legs.",
+                "subtopics": {
+                    "Australopithecus Afarensis": {
+                        "title": "Australopithecus Afarensis",
+                        "description": "Australopithecus afarensis is an extinct species of early human that lived around 3.9-2.9 million years ago. It is one of the most well-known early human ancestors, with the most famous fossil being 'Lucy'. Australopithecus afarensis was around 3-4 feet tall, and weighed around 70-100 pounds. It had a brain size of around 380-430cc, which is slightly smaller than that of modern chimpanzees. The species is thought to have lived in woodlands and forests, and likely lived in small groups.",
+                        "subtopics": {}
+                    }
+                }
+            }
+        },
+        "Emergence of Homo Sapiens": {
+            "title": "Emergence of Homo Sapiens",
+            "description": "The emergence of Homo sapiens, around 300,000 years ago, marked a significant milestone in human evolution. Homo sapiens had larger brains and more advanced cognitive abilities than their predecessors.",
+            "subtopics": {
+                "Cognitive Advancements": {
+                    "title": "Cognitive Advancements",
+                    "description": "Homo sapiens had significant cognitive advancements compared to their predecessors. They had larger brains, with a brain size of around 1300-1500cc. This allowed for more complex social structures, language development, and the creation of art and culture.",
+                    "subtopics": {}
+                },
+                "Migration and Settlement": {
+                    "title": "Migration and Settlement",
+                    "description": "Homo sapiens migrated out of Africa, around 60,000-70,000 years ago, and settled in various parts of the world. This migration was likely driven by climate change and the search for food and resources.",
+                    "subtopics": {}
+                }
+            }
+        },
+        "Development of Agriculture": {
+            "title": "Development of Agriculture",
+            "description": "The development of agriculture, around 10,000-12,000 years ago, marked a significant shift in human history. Agriculture allowed for the production of surplus food, which led to the growth of cities and the development of complex societies.",
+            "subtopics": {
+                "Neolithic Revolution": {
+                    "title": "Neolithic Revolution",
+                    "description": "The Neolithic Revolution was a period of significant change in human history, marked by the development of agriculture and the growth of cities. This period saw the emergence of complex societies, with specialized labor, social hierarchies, and the growth of trade networks.",   
+                    "subtopics": {}
+                }
+            }
+        },
+        "Modern Human History": {
+            "title": "Modern Human History",
+            "description": "Modern human history, from around 5,000 years ago to the present day, is characterized by the growth of cities, the development of complex societies, and the impact of humans on the environment.",
+            "subtopics": {
+                "Ancient Civilizations": {
+                    "title": "Ancient Civilizations",
+                    "description": "Ancient civilizations, such as Mesopotamia, Greeks, and Romans, made significant contributions to the development of human societies. They developed systems of governance, architecture, and made significant advances in science and technology.",
+                    "subtopics": {}
+                },
+                "Industrial Revolution": {
+                    "title": "Industrial Revolution",
+                    "description": "The Industrial Revolution, which began in the 18th century, marked a significant shift in human history. It was characterized by the development of new technologies, such as the steam engine, and the growth of industrial production.",
+                    "subtopics": {}
+                }
+            }
+        }
+    }
+}
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Raw API Response: {
+    "title": "History of Humans",
+    "description": "The history of humans spans thousands of years, from the emergence of early hominins to the present day. It is a complex and multifaceted topic that encompasses various disciplines, including archaeology, anthropology, sociology, and history.",
+    "subtopics": {
+        "Early Hominins": {
+            "title": "Early Hominins",
+            "description": "The earliest human-like species, such as Australopithecus afarensis, emerged around 4-6 million years ago in Africa. These early hominins were characterized by their bipedalism, brain size, and ape-like features.",
+            "subtopics": {
+                "Australopithecus Afarensis": {
+                    "title": "Australopithecus Afarensis",
+                    "description": "Australopithecus afarensis, which lived around 3.9-2.9 million years ago, is one of the most well-known early hominins. It had a brain size of around 380-430 cubic centimeters, a height of around 3.5-4.5 feet, and a weight of around 70-110 pounds. The species is famous for the discovery of 'Lucy,' a 3.2 million-year-old fossil found in Hadar, Ethiopia. Australopithecus afarensis is thought to be an intermediate species between the earlier hominins and the later Homo genus."
+                },
+                "Homo Habilis": {
+                    "title": "Homo Habilis",
+                    "description": "Homo habilis, which lived around 2.8-1.4 million years ago, is thought to be the first species to use tools. It had a brain size of around 600-700 cubic centimeters, a height of around 4-5 feet, and a weight of around 70-100 pounds. Homo habilis is considered a key transitional species between the early hominins and the emergence of Homo erectus."
+                }
+            }
+        },
+        "Homo Erectus": {
+            "title": "Homo Erectus",
+            "description": "Homo erectus, which lived from around 1.8 million-70,000 years ago, was the first human ancestor to migrate out of Africa and colonize other parts of the world. It had a brain size of around 900-1100 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+            "subtopics": {
+                "Control of Fire": {
+                    "title": "Control of Fire",
+                    "description": "Homo erectus is thought to be the first species to control and use fire. This innovation had a significant impact on the species' ability to adapt to different environments, cook food, and develop social and cultural practices. The control of fire also allowed Homo erectus to migrate to colder climates and expand its geographical range."
+            },
+            "Migration Out of Africa": {
+                "title": "Migration Out of Africa",
+                "description": "Homo erectus was the first human ancestor to migrate out of Africa and colonize other parts of the world. This migration is thought to have occurred in multiple waves, with some populations migrating to Europe and Asia, while others remained in Africa. The migration out of Africa was likely driven by climate change, the search for food, and the need for new habitats."
+            }
+        }
+    },
+    "Homo Sapiens": {
+        "title": "Homo Sapiens",
+        "description": "Homo sapiens, which emerged around 300,000 years ago in Africa, is the species to which modern humans belong. It is characterized by its brain size of around 1300-1500 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+        "subtopics": {
+            "Development of Language": {
+                "Development of Language",
+                "description": "Homo sapiens developed complex language, which enabled the species to communicate, cooperate, and develop complex social and cultural practices. Language also allowed Homo sapiens to pass on knowledge, skills, and traditions from one generation to the next."
+            },
+            "Development of Agriculture": {
+                "title": "Development of Agriculture",
+                "description": "Homo sapiens developed agriculture around 10,000 years ago, which allowed the species to produce food, settle in permanent locations, and develop complex societies. This innovation had a significant impact on the species' ability to adapt to different environments, develop social hierarchies, and expand its geographical range."
+            }
+        }
+    },
+    "Neolithic Revolution": {
+        "Neolithic Revolution",
+        "description": "The Neolithic Revolution, which occurred around 10,000-4,000 years ago, marked a significant shift in human history, as people began to domesticate plants and animals, develop settled agriculture, and establish permanent settlements.",
+        "subtopics": {
+            "Emergence of Cities": {
+                "title": "Emergence of Cities",
+                "description": "The Neolithic Revolution led to the emergence of cities, which were characterized by their complexity, social stratification, and economic specialization. Cities allowed for the development of complex systems of governance, trade, and cultural practices."
+            },
+            "Development of Writing": {
+                "title": "Development of Writing",
+                "description": "The Neolithic Revolution also led to the development of writing, which enabled people to record and pass on knowledge, ideas, and cultural practices. Writing also allowed for the emergence of complex systems of governance, trade, and cultural practices."
+            }
+        }
+    },
+    "Ancient Civilizations": {
+        "title": "Ancient Civilizations",
+        "description": "Ancient civilizations, such as Mesopotamia, Egypt, Greece, and Rome, developed complex societies, governments, economies, and cultures. These civilizations made significant contributions to human knowledge, innovation, and cultural achievements.",
+        "subtopics": {
+            "Mesopotamia": {
+                "title": "Mesopotamia",
+                "description": "Mesopotamia, which flourished around 3,500-1,500 BCE, was one of the earliest ancient civilizations. It developed a system of writing, governance, and trade, and is credited with the invention of the wheel."
+            },
+            "Egypt": {
+                "title": "Egypt",
+                "description": "Ancient Egypt, which flourished around 3,100-3,300 BCE, was characterized by its pyramidal structures, hieroglyphics, and complex system of governance. Egypt made significant contributions to architecture, medicine, and mathematics."
+            }
+        }
+    }
+}
+}
+
+Cleaned JSON content: {
+    "title": "History of Humans",
+    "description": "The history of humans spans thousands of years, from the emergence of early hominins to the present day. It is a complex and multifaceted topic that encompasses various disciplines, including archaeology, anthropology, sociology, and history.",
+    "subtopics": {
+        "Early Hominins": {
+            "title": "Early Hominins",
+            "description": "The earliest human-like species, such as Australopithecus afarensis, emerged around 4-6 million years ago in Africa. These early hominins were characterized by their bipedalism, brain size, and ape-like features.",
+            "subtopics": {
+                "Australopithecus Afarensis": {
+                    "title": "Australopithecus Afarensis",
+                    "description": "Australopithecus afarensis, which lived around 3.9-2.9 million years ago, is one of the most well-known early hominins. It had a brain size of around 380-430 cubic centimeters, a height of around 3.5-4.5 feet, and a weight of around 70-110 pounds. The species is famous for the discovery of 'Lucy,' a 3.2 million-year-old fossil found in Hadar, Ethiopia. Australopithecus afarensis is thought to be an intermediate species between the earlier hominins and the later Homo genus."
+                },
+                "Homo Habilis": {
+                    "title": "Homo Habilis",
+                    "description": "Homo habilis, which lived around 2.8-1.4 million years ago, is thought to be the first species to use tools. It had a brain size of around 600-700 cubic centimeters, a height of around 4-5 feet, and a weight of around 70-100 pounds. Homo habilis is considered a key transitional species between the early hominins and the emergence of Homo erectus."
+                }
+            }
+        },
+        "Homo Erectus": {
+            "title": "Homo Erectus",
+            "description": "Homo erectus, which lived from around 1.8 million-70,000 years ago, was the first human ancestor to migrate out of Africa and colonize other parts of the world. It had a brain size of around 900-1100 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+            "subtopics": {
+                "Control of Fire": {
+                    "title": "Control of Fire",
+                    "description": "Homo erectus is thought to be the first species to control and use fire. This innovation had a significant impact on the species' ability to adapt to different environments, cook food, and develop social and cultural practices. The control of fire also allowed Homo erectus to migrate to colder climates and expand its geographical range."
+            },
+            "Migration Out of Africa": {
+                "title": "Migration Out of Africa",
+                "description": "Homo erectus was the first human ancestor to migrate out of Africa and colonize other parts of the world. This migration is thought to have occurred in multiple waves, with some populations migrating to Europe and Asia, while others remained in Africa. The migration out of Africa was likely driven by climate change, the search for food, and the need for new habitats."
+            }
+        }
+    },
+    "Homo Sapiens": {
+        "title": "Homo Sapiens",
+        "description": "Homo sapiens, which emerged around 300,000 years ago in Africa, is the species to which modern humans belong. It is characterized by its brain size of around 1300-1500 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+        "subtopics": {
+            "Development of Language": {
+                "Development of Language",
+                "description": "Homo sapiens developed complex language, which enabled the species to communicate, cooperate, and develop complex social and cultural practices. Language also allowed Homo sapiens to pass on knowledge, skills, and traditions from one generation to the next."
+            },
+            "Development of Agriculture": {
+                "title": "Development of Agriculture",
+                "description": "Homo sapiens developed agriculture around 10,000 years ago, which allowed the species to produce food, settle in permanent locations, and develop complex societies. This innovation had a significant impact on the species' ability to adapt to different environments, develop social hierarchies, and expand its geographical range."
+            }
+        }
+    },
+    "Neolithic Revolution": {
+        "Neolithic Revolution",
+        "description": "The Neolithic Revolution, which occurred around 10,000-4,000 years ago, marked a significant shift in human history, as people began to domesticate plants and animals, develop settled agriculture, and establish permanent settlements.",
+        "subtopics": {
+            "Emergence of Cities": {
+                "title": "Emergence of Cities",
+                "description": "The Neolithic Revolution led to the emergence of cities, which were characterized by their complexity, social stratification, and economic specialization. Cities allowed for the development of complex systems of governance, trade, and cultural practices."
+            },
+            "Development of Writing": {
+                "title": "Development of Writing",
+                "description": "The Neolithic Revolution also led to the development of writing, which enabled people to record and pass on knowledge, ideas, and cultural practices. Writing also allowed for the emergence of complex systems of governance, trade, and cultural practices."
+            }
+        }
+    },
+    "Ancient Civilizations": {
+        "title": "Ancient Civilizations",
+        "description": "Ancient civilizations, such as Mesopotamia, Egypt, Greece, and Rome, developed complex societies, governments, economies, and cultures. These civilizations made significant contributions to human knowledge, innovation, and cultural achievements.",
+        "subtopics": {
+            "Mesopotamia": {
+                "title": "Mesopotamia",
+                "description": "Mesopotamia, which flourished around 3,500-1,500 BCE, was one of the earliest ancient civilizations. It developed a system of writing, governance, and trade, and is credited with the invention of the wheel."
+            },
+            "Egypt": {
+                "title": "Egypt",
+                "description": "Ancient Egypt, which flourished around 3,100-3,300 BCE, was characterized by its pyramidal structures, hieroglyphics, and complex system of governance. Egypt made significant contributions to architecture, medicine, and mathematics."
+            }
+        }
+    }
+}
+}
+
+JSON parsing error: Expecting ':' delimiter: line 38 column 42 (char 3657)
+Failed to parse content: {
+    "title": "History of Humans",
+    "description": "The history of humans spans thousands of years, from the emergence of early hominins to the present day. It is a complex and multifaceted topic that encompasses various disciplines, including archaeology, anthropology, sociology, and history.",
+    "subtopics": {
+        "Early Hominins": {
+            "title": "Early Hominins",
+            "description": "The earliest human-like species, such as Australopithecus afarensis, emerged around 4-6 million years ago in Africa. These early hominins were characterized by their bipedalism, brain size, and ape-like features.",
+            "subtopics": {
+                "Australopithecus Afarensis": {
+                    "title": "Australopithecus Afarensis",
+                    "description": "Australopithecus afarensis, which lived around 3.9-2.9 million years ago, is one of the most well-known early hominins. It had a brain size of around 380-430 cubic centimeters, a height of around 3.5-4.5 feet, and a weight of around 70-110 pounds. The species is famous for the discovery of 'Lucy,' a 3.2 million-year-old fossil found in Hadar, Ethiopia. Australopithecus afarensis is thought to be an intermediate species between the earlier hominins and the later Homo genus."
+                },
+                "Homo Habilis": {
+                    "title": "Homo Habilis",
+                    "description": "Homo habilis, which lived around 2.8-1.4 million years ago, is thought to be the first species to use tools. It had a brain size of around 600-700 cubic centimeters, a height of around 4-5 feet, and a weight of around 70-100 pounds. Homo habilis is considered a key transitional species between the early hominins and the emergence of Homo erectus."
+                }
+            }
+        },
+        "Homo Erectus": {
+            "title": "Homo Erectus",
+            "description": "Homo erectus, which lived from around 1.8 million-70,000 years ago, was the first human ancestor to migrate out of Africa and colonize other parts of the world. It had a brain size of around 900-1100 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+            "subtopics": {
+                "Control of Fire": {
+                    "title": "Control of Fire",
+                    "description": "Homo erectus is thought to be the first species to control and use fire. This innovation had a significant impact on the species' ability to adapt to different environments, cook food, and develop social and cultural practices. The control of fire also allowed Homo erectus to migrate to colder climates and expand its geographical range."
+            },
+            "Migration Out of Africa": {
+                "title": "Migration Out of Africa",
+                "description": "Homo erectus was the first human ancestor to migrate out of Africa and colonize other parts of the world. This migration is thought to have occurred in multiple waves, with some populations migrating to Europe and Asia, while others remained in Africa. The migration out of Africa was likely driven by climate change, the search for food, and the need for new habitats."
+            }
+        }
+    },
+    "Homo Sapiens": {
+        "title": "Homo Sapiens",
+        "description": "Homo sapiens, which emerged around 300,000 years ago in Africa, is the species to which modern humans belong. It is characterized by its brain size of around 1300-1500 cubic centimeters, a height of around 5-6 feet, and a weight of around 100-150 pounds.",
+        "subtopics": {
+            "Development of Language": {
+                "Development of Language",
+                "description": "Homo sapiens developed complex language, which enabled the species to communicate, cooperate, and develop complex social and cultural practices. Language also allowed Homo sapiens to pass on knowledge, skills, and traditions from one generation to the next."
+            },
+            "Development of Agriculture": {
+                "title": "Development of Agriculture",
+                "description": "Homo sapiens developed agriculture around 10,000 years ago, which allowed the species to produce food, settle in permanent locations, and develop complex societies. This innovation had a significant impact on the species' ability to adapt to different environments, develop social hierarchies, and expand its geographical range."
+            }
+        }
+    },
+    "Neolithic Revolution": {
+        "Neolithic Revolution",
+        "description": "The Neolithic Revolution, which occurred around 10,000-4,000 years ago, marked a significant shift in human history, as people began to domesticate plants and animals, develop settled agriculture, and establish permanent settlements.",
+        "subtopics": {
+            "Emergence of Cities": {
+                "title": "Emergence of Cities",
+                "description": "The Neolithic Revolution led to the emergence of cities, which were characterized by their complexity, social stratification, and economic specialization. Cities allowed for the development of complex systems of governance, trade, and cultural practices."
+            },
+            "Development of Writing": {
+                "title": "Development of Writing",
+                "description": "The Neolithic Revolution also led to the development of writing, which enabled people to record and pass on knowledge, ideas, and cultural practices. Writing also allowed for the emergence of complex systems of governance, trade, and cultural practices."
+            }
+        }
+    },
+    "Ancient Civilizations": {
+        "title": "Ancient Civilizations",
+        "description": "Ancient civilizations, such as Mesopotamia, Egypt, Greece, and Rome, developed complex societies, governments, economies, and cultures. These civilizations made significant contributions to human knowledge, innovation, and cultural achievements.",
+        "subtopics": {
+            "Mesopotamia": {
+                "title": "Mesopotamia",
+                "description": "Mesopotamia, which flourished around 3,500-1,500 BCE, was one of the earliest ancient civilizations. It developed a system of writing, governance, and trade, and is credited with the invention of the wheel."
+            },
+            "Egypt": {
+                "title": "Egypt",
+                "description": "Ancient Egypt, which flourished around 3,100-3,300 BCE, was characterized by its pyramidal structures, hieroglyphics, and complex system of governance. Egypt made significant contributions to architecture, medicine, and mathematics."
+            }
+        }
+    }
+}
+}
+INFO:httpx:HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+
+Raw API Response: {
+"title": "History of Humans",
+"description": "The history of humans spans millions of years, from the emergence of early hominins to the present day. It is a complex and dynamic narrative that has been shaped by geographical, cultural, and biological factors.",
+"subtopics": {
+"Hominin Evolution": {
+"title": "Hominin Evolution",
+"description": "This period saw the emergence of early hominins, such as Australopithecus afarensis, and the gradual development of bipedalism and brain enlargement.",
+"subtopics": {
+"Early Hominins": {
+"title": "Early Hominins",
+"description": "Australopithecus afarensis, lived around 3.9-2.9 million years ago, had a brain size of around 380-450cc, and was around 1-1.5 meters tall; they were bipedal, with a mix of ape-like and human-like features.",
+"subtopics": {}
+},
+"Hominin Migration": {
+"title": "Hominin Migration",
+"description": "As the climate changed, early hominins migrated out of Africa, spreading to various parts of the world, adapting to new environments and developing new technologies.",
+"subtopics": {}
+}
+}
+},
+"Emergence of Homo Sapiens": {
+"title": "Emergence of Homo Sapiens",
+"description": "Around 200,000 years ago, Homo sapiens emerged in Africa, with a brain size of around 1300-1400cc, and a more modern human-like appearance.",
+"subtopics": {
+"Homo Sapiens Migration": {
+"title": "Homo sapiens Migration",
+"description": "Homo sapiens migrated out of Africa, replacing other human species, such as Neanderthals and Denisovans, and developing complex societies and cultures.",
+"subtopics": {}
+},
+"Development of Language": {
+"title": "Development of Language",
+"description": "The development of language allowed for more complex communication, social structures, and the emergence of complex societies.",
+"subtopics": {}
+}
+}
+},
+"Development of Agriculture": {
+"title": "Development of Agriculture",
+"description": "Around 10,000 years ago, humans began to domesticate plants and animals, leading to the emergence of settled agricultural societies.",
+"subtopics": {
+"Emergence of Cities": {
+"title": "Emergence of Cities",
+"description": "As agriculture allowed for food surpluses, cities emerged, with complex social hierarchies, and the development of specialized labor.",
+"subtopics": {}
+},
+"Development of Writing": {
+"title": "Development of Writing",
+"description": "The development of writing allowed for the recording of history, trade, and scientific knowledge, and the emergence of complex civilizations.",
+"subtopics": {}
+}
+}
+}
+}
+
+Cleaned JSON content: {
+"title": "History of Humans",
+"description": "The history of humans spans millions of years, from the emergence of early hominins to the present day. It is a complex and dynamic narrative that has been shaped by geographical, cultural, and biological factors.",
+"subtopics": {
+"Hominin Evolution": {
+"title": "Hominin Evolution",
+"description": "This period saw the emergence of early hominins, such as Australopithecus afarensis, and the gradual development of bipedalism and brain enlargement.",
+"subtopics": {
+"Early Hominins": {
+"title": "Early Hominins",
+"description": "Australopithecus afarensis, lived around 3.9-2.9 million years ago, had a brain size of around 380-450cc, and was around 1-1.5 meters tall; they were bipedal, with a mix of ape-like and human-like features.",
+"subtopics": {}
+},
+"Hominin Migration": {
+"title": "Hominin Migration",
+"description": "As the climate changed, early hominins migrated out of Africa, spreading to various parts of the world, adapting to new environments and developing new technologies.",
+"subtopics": {}
+}
+}
+},
+"Emergence of Homo Sapiens": {
+"title": "Emergence of Homo Sapiens",
+"description": "Around 200,000 years ago, Homo sapiens emerged in Africa, with a brain size of around 1300-1400cc, and a more modern human-like appearance.",
+"subtopics": {
+"Homo Sapiens Migration": {
+"title": "Homo sapiens Migration",
+"description": "Homo sapiens migrated out of Africa, replacing other human species, such as Neanderthals and Denisovans, and developing complex societies and cultures.",
+"subtopics": {}
+},
+"Development of Language": {
+"title": "Development of Language",
+"description": "The development of language allowed for more complex communication, social structures, and the emergence of complex societies.",
+"subtopics": {}
+}
+}
+},
+"Development of Agriculture": {
+"title": "Development of Agriculture",
+"description": "Around 10,000 years ago, humans began to domesticate plants and animals, leading to the emergence of settled agricultural societies.",
+"subtopics": {
+"Emergence of Cities": {
+"title": "Emergence of Cities",
+"description": "As agriculture allowed for food surpluses, cities emerged, with complex social hierarchies, and the development of specialized labor.",
+"subtopics": {}
+},
+"Development of Writing": {
+"title": "Development of Writing",
+"description": "The development of writing allowed for the recording of history, trade, and scientific knowledge, and the emergence of complex civilizations.",
+"subtopics": {}
+}
+}
+}
+}
+
+JSON parsing error: Expecting ',' delimiter: line 53 column 2 (char 2504)
+Failed to parse content: {
+"title": "History of Humans",
+"description": "The history of humans spans millions of years, from the emergence of early hominins to the present day. It is a complex and dynamic narrative that has been shaped by geographical, cultural, and biological factors.",
+"subtopics": {
+"Hominin Evolution": {
+"title": "Hominin Evolution",
+"description": "This period saw the emergence of early hominins, such as Australopithecus afarensis, and the gradual development of bipedalism and brain enlargement.",
+"subtopics": {
+"Early Hominins": {
+"title": "Early Hominins",
+"description": "Australopithecus afarensis, lived around 3.9-2.9 million years ago, had a brain size of around 380-450cc, and was around 1-1.5 meters tall; they were bipedal, with a mix of ape-like and human-like features.",
+"subtopics": {}
+},
+"Hominin Migration": {
+"title": "Hominin Migration",
+"description": "As the climate changed, early hominins migrated out of Africa, spreading to various parts of the world, adapting to new environments and developing new technologies.",
+"subtopics": {}
+}
+}
+},
+"Emergence of Homo Sapiens": {
+"title": "Emergence of Homo Sapiens",
+"description": "Around 200,000 years ago, Homo sapiens emerged in Africa, with a brain size of around 1300-1400cc, and a more modern human-like appearance.",
+"subtopics": {
+"Homo Sapiens Migration": {
+"title": "Homo sapiens Migration",
+"description": "Homo sapiens migrated out of Africa, replacing other human species, such as Neanderthals and Denisovans, and developing complex societies and cultures.",
+"subtopics": {}
+},
+"Development of Language": {
+"title": "Development of Language",
+"description": "The development of language allowed for more complex communication, social structures, and the emergence of complex societies.",
+"subtopics": {}
+}
+}
+},
+"Development of Agriculture": {
+"title": "Development of Agriculture",
+"description": "Around 10,000 years ago, humans began to domesticate plants and animals, leading to the emergence of settled agricultural societies.",
+"subtopics": {
+"Emergence of Cities": {
+"title": "Emergence of Cities",
+"description": "As agriculture allowed for food surpluses, cities emerged, with complex social hierarchies, and the development of specialized labor.",
+"subtopics": {}
+},
+"Development of Writing": {
+"title": "Development of Writing",
+"description": "The development of writing allowed for the recording of history, trade, and scientific knowledge, and the emergence of complex civilizations.",
+"subtopics": {}
+}
+}
+}
+}
+
+Error in API call: Invalid JSON response: Expecting ',' delimiter: line 53 column 2 (char 2504)
+ERROR:__main__:Error generating mind map: Failed to generate mind map: Invalid JSON response: Expecting ',' delimiter: line 53 column 2 (char 2504)
+127.0.0.1 - - [10/Jun/2025 18:58:17] "POST /generate HTTP/1.1" 500 -

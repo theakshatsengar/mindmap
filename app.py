@@ -11,6 +11,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Get the base URL from environment variable
+BASE_URL = os.getenv('LINK', 'localhost:8000')
+
 class MindMapHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
         # Serve index.html as the default page
@@ -69,9 +72,9 @@ def run_server(port=None):
         port = int(os.getenv('PORT', 8000))
     server_address = ('', port)
     httpd = HTTPServer(server_address, MindMapHandler)
-    logger.info(f"Server running at http://localhost:{port}")
+    logger.info(f"Server running at http://{BASE_URL}")
     if os.getenv('RENDER') is None:  # Only open browser in local development
-      webbrowser.open(f'http://localhost:{port}')
+        webbrowser.open(f'http://{BASE_URL}')
     httpd.serve_forever()
 
 if __name__ == '__main__':
